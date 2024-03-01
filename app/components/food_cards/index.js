@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateQuantity, removeFromCart } from '../../redux/reducer/cart-reducer';
 import Image from 'next/image';
 import "./index.css";
 
@@ -8,34 +10,35 @@ export const FoodListCards = ({ product, onAddToCart }) => {
     const { id, foodName, image, foodPrice, restaurant, category } = product;
     const [addedToCart, setAddedToCart] = useState(false);
     const [quantity, setQuantity] = useState(1);
+    const dispatch = useDispatch();
 
     const handleAddToCart = () => {
-        // const cartItem = {
-        //     id: product.id,
-        //     foodName,
-        //     price: foodPrice,
-        //     image: image,
-        //     quantity: 1,
-        //     restaurant,
-        // };
-        // onAddToCart(cartItem);
+        const cartItem = {
+            id: product.id,
+            foodName,
+            price: foodPrice,
+            image: image,
+            quantity: 1,
+            restaurant,
+        };
+        onAddToCart(cartItem);
         setAddedToCart(true);
     };
 
     const handleDecreaseQuantity = () => {
         if (quantity > 1) {
             setQuantity(prevQuantity => prevQuantity - 1);
-            // dispatch(updateQuantity({ itemId: id, increment: false }));
+            dispatch(updateQuantity({ itemId: id, increment: false }));
         } else if (quantity === 1) {
             setQuantity(0);
-            // dispatch(removeFromCart(id));
+            dispatch(removeFromCart(id));
             setAddedToCart(false);
         }
     };
 
     const handleIncreaseQuantity = () => {
         setQuantity(quantity + 1);
-        // dispatch(updateQuantity({ itemId: id, increment: true }));
+        dispatch(updateQuantity({ itemId: id, increment: true }));
     };
 
 
