@@ -1,4 +1,7 @@
+"useclient";
 import { Inter } from "next/font/google";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
+import NavbarComponent from "./components/navbar/index.js";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -11,7 +14,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <AppRouterCacheProvider>
+        <body className={inter.className}>
+          <div className="nav-bar">
+            <NavbarComponent />
+          </div>
+          <div id="root">
+            {children}
+          </div>
+        </body>
+      </AppRouterCacheProvider>
     </html>
   );
 }

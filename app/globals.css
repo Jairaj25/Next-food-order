@@ -16,7 +16,18 @@
   }
 }
 
+html,
 body {
+  overflow-x: hidden;
+  font-size: 18px;
+  color: #1C2344;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,6 +35,47 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.overflow-hidden{
+  overflow: hidden;
+}
+
+a {
+  outline: none !important;
+  text-decoration: none !important;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+#root{
+  background: #FFFFFF;
+}
+
+@media (max-width: 1023px) {
+
+  html,
+  body {
+    font-size: 16px;
+  }
+}
+
+.nav-bar{
+  position: relative;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
 }
 
 @layer utilities {
