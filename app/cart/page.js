@@ -9,6 +9,7 @@ import "./index.css";
 export default function CartPage() {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
+
   const handleClearToCart = () => {
     dispatch(clearCart());
   }
@@ -41,12 +42,14 @@ export default function CartPage() {
             <div className='cart-remove-btn'>
               <p>Total</p>
             </div>
-          </div>) : (null)}
+          </div>) : (<></>)}
         {cart.items.map(item => (
           <div className='cart-card' key={item.id}>
             <div className='cart-card-name'>
               <div className='cart-card-name-image-container'>
-                <Image className='cart-card-name-image' src={item.image} alt='Product Image' />
+                <div className='cart-card-name-image'>
+                  <Image src={item.image} alt='Product Image' />
+                </div>
                 <div className='cart-card-name-capsule'>
                   <p>{item.foodName}</p>
                 </div>
@@ -61,7 +64,7 @@ export default function CartPage() {
               </div>
             </div>
             <div className='total-action-wrapper'>
-              <div className='cart-card-total'>${(item.price * item.quantity).toFixed(2)}</div>
+              <div className='cart-card-total'><p>${(item.price * item.quantity).toFixed(2)}</p></div>
               <button className='cart-remove-btn' onClick={() => handleRemoveFromCart(item.id)}>
                 <Image src={closeCircle} alt="close button" width={18} height={18} />
               </button>

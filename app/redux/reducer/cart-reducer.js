@@ -1,11 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const loadCartFromStorage = () => {
+  let storedCart;
+
   if (typeof window !== 'undefined') {
-    const storedCart = localStorage.getItem('cart');
-    return storedCart ? JSON.parse(storedCart) : { items: [], total: 0, restaurant: '', image: '' };
+    storedCart = localStorage.getItem('cart');
+
+    try {
+      // Attempt to parse the stored cart as JSON
+      storedCart = JSON.parse(storedCart);
+    } catch (error) {
+      // If parsing fails, log the error and set storedCart to null
+      console.error('Error parsing cart from storage:', error);
+      storedCart = null
+    }
   }
-  return { items: [], total: 0, restaurant: '', image: '' };
+
+  // Check if storedCart is not null and it has necessary properties
+  if (storedCart) {
+    return storedCart;
+  } else {
+    // Return default cart object if storedCart is not valid
+    return { items: [], total: 0, restaurant: '', image: '' };
+  }
 };
 
 const saveCartToStorage = (cart) => {
