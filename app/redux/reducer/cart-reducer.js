@@ -7,20 +7,16 @@ const loadCartFromStorage = () => {
     storedCart = localStorage.getItem('cart');
 
     try {
-      // Attempt to parse the stored cart as JSON
       storedCart = JSON.parse(storedCart);
     } catch (error) {
-      // If parsing fails, log the error and set storedCart to null
       console.error('Error parsing cart from storage:', error);
-      storedCart = null
+      storedCart = null;
     }
   }
 
-  // Check if storedCart is not null and it has necessary properties
   if (storedCart) {
     return storedCart;
   } else {
-    // Return default cart object if storedCart is not valid
     return { items: [], total: 0, restaurant: '', image: '' };
   }
 };
@@ -47,7 +43,7 @@ const cartSlice = createSlice({
 
       state.total = state.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
       state.restaurant = newItem.restaurant;
-      state.image = newItem.image
+      state.image = newItem.image;
 
       saveCartToStorage(state);
     },
