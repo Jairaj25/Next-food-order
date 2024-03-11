@@ -48,22 +48,27 @@ export default function LoginPage() {
           <h2>Login</h2>
         </div>
         <div className="login-email-input-container">
-          <label style={{ color: emailError ? '#C94A4A' : 'inherit' }}>Email</label>
+          <label htmlFor="login-email" style={{ color: emailError ? '#C94A4A' : 'inherit' }}>Email</label>
           <input
             type="email"
+            id="login-email"
             value={email}
+            name="email"
             onChange={(e) => setEmail(e.target.value)}
             placeholder='JohnDoe@Example.com'
+            autoComplete="email"
           />
           {emailError && <div className="login-error-message">{emailError}</div>}
         </div>
         <div className="login-password-input-container">
-          <label>Password</label>
+          <label htmlFor="login-password">Password</label>
           <input
             type="password"
+            id="login-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder='********'
+            autoComplete="current-password"
           />
           {passwordError && <div className="login-error-message">{passwordError}</div>}
         </div>
@@ -72,7 +77,7 @@ export default function LoginPage() {
         </div>
         <div className="login-submit-button-container">
           <div className="login-submit-button-wrapper">
-            <div onClick={handleLogin}>Login</div>
+            <button type="submit" onClick={handleLogin}>Login</button>
           </div>
         </div>
         <div className="login-switchform-container">

@@ -1,4 +1,3 @@
-import landingVideo from '../public/videos/landing-video.mp4';
 import Link from 'next/link';
 import "./index.css";
 
@@ -7,7 +6,7 @@ export default function Home() {
         <section className="outter option1">
             <section className="video-container">
                 <video autoPlay loop playsInline muted>
-                    <source src="/videos/landing-video.mp4" type='video/mp4' />
+                    <source src="/videos/landing-stcok-footage.mp4" type='video/mp4' />
                 </video>
                 <div className="callout">
                     <h1>Order Food the easy way</h1>

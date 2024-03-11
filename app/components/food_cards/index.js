@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity, removeFromCart } from '../../redux/reducer/cart-reducer';
 import Image from 'next/image';
 import "./index.css";
@@ -11,6 +11,15 @@ export const FoodListCards = ({ product, onAddToCart }) => {
     const [addedToCart, setAddedToCart] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
+    const cartItems = useSelector(state => state.cart.items);
+
+    useEffect(() => {
+        const itemInCart = cartItems.find(item => item.id === id);
+        if (itemInCart) {
+            setAddedToCart(true);
+            setQuantity(itemInCart.quantity);
+        }
+    }, [cartItems, id]);
 
     const handleAddToCart = () => {
         const cartItem = {

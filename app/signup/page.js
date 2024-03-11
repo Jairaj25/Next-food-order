@@ -81,42 +81,54 @@ export default function SignupPage() {
                     <h2>Sign Up Form</h2>
                 </div>
                 <div className="login-email-input-container">
-                    <label>Email</label>
+                    <label htmlFor="signup-email">Email</label>
                     <input
                         type="email"
+                        id="signup-email"
                         placeholder='Email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        name="email"
+                        autoComplete="email"
                     />
                     {emailError && <div className="login-error-message">{emailError}</div>}
                 </div>
                 <div className="login-password-input-container">
-                    <label>Password</label>
+                    <label htmlFor="signup-password">Password</label>
                     <input
                         type="password"
+                        id="signup-password"
                         placeholder='Password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        name="password"
+                        autoComplete="off"
                     />
                     {passwordError && <div className="login-error-message">{passwordError}</div>}
                 </div>
                 <div className="login-password-input-container">
-                    <label>Name</label>
+                    <label htmlFor="signup-name">Name</label>
                     <input
                         type="text"
+                        id="signup-name"
                         placeholder='Name'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        name="name"
+                        autoComplete="on"
                     />
                     {nameError && <div className="login-error-message">{nameError}</div>}
                 </div>
                 <div className="login-password-input-container">
-                    <label>Phone Number</label>
+                    <label htmlFor="signup-phone-number">Phone Number</label>
                     <input
                         type="tel"
+                        id="signup-phone-number"
                         placeholder='598-381-7493'
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
+                        name="phoneNumber"
+                        autoComplete="on"
                     />
                     {phoneNumberError && <div className="login-error-message">{phoneNumberError}</div>}
                 </div>
@@ -125,9 +137,10 @@ export default function SignupPage() {
                 </div>
                 <div className="login-submit-button-container">
                     <div className="login-submit-button-wrapper">
-                        <div onClick={handleSignup}>Sign Up</div>
+                        <button type="submit" onClick={handleSignup}>Sign Up</button>
                     </div>
                 </div>
+
                 <div className="login-switchform-container">
                     <p>Already have an account? </p>
                     <Link className="login-link-text" href="/login">Log in here.</Link>

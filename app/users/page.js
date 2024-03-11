@@ -117,8 +117,8 @@ export default function UsersPage() {
     return (
         <div>
             <form className="mock-search-container" onSubmit={handleSearchSubmit}>
-                <input className="mock-search-input" placeholder='Enter ID' value={searchedUserId || ""} onChange={handleInputChange} />
-                <button className="mock-search-submit-button" type="submit">
+                <input id="search-user-id" className="mock-search-input" name="id" placeholder="Enter ID" value={searchedUserId || ""} onChange={handleInputChange} />
+                <button id="search-submit-btn" className="mock-search-submit-button" type="submit">
                     <Image src={searchIcon} alt="Search" width={18} height={18} />
                 </button>
             </form>
@@ -167,19 +167,19 @@ export default function UsersPage() {
                 <div className="edit-users-container">
                     <form className="edit-users-form" onSubmit={handleSubmit}>
                         <div className="edit-user-input">
-                            <label>Name:</label>
-                            <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
+                            <label htmlFor="edit-user-name">Name:</label>
+                            <input id="edit-user-name" type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
                         </div>
                         <div className="edit-user-input">
-                            <label>Description:</label>
-                            <textarea className='edit-user-textarea' name="description" placeholder="Description" value={formData.description} onChange={handleChange} />
+                            <label htmlFor="edit-user-description">Description:</label>
+                            <textarea id="edit-user-description" className="edit-user-textarea" name="description" placeholder="Description" value={formData.description} onChange={handleChange} />
                         </div>
                         <div className="edit-user-input">
-                            <label>Vehicle:</label>
-                            <input type="text" name="vehicle" placeholder="Vehicle" value={formData.vehicle} onChange={handleChange} />
+                            <label htmlFor="edit-user-vehicle">Vehicle:</label>
+                            <input id="edit-user-vehicle" type="text" name="vehicle" placeholder="Vehicle" value={formData.vehicle} onChange={handleChange} />
                         </div>
                         <div className="edit-user-submit-btn">
-                            <button type="submit">Submit</button>
+                            <button id="edit-submit-btn" type="submit">Submit</button>
                         </div>
                     </form>
                     <button className="edit-users-modal-close" onClick={() => {
@@ -211,19 +211,19 @@ export default function UsersPage() {
                 <div className="edit-users-container">
                     <form className="edit-users-form" onSubmit={handleCreateUserSubmit}>
                         <div className="edit-user-input">
-                            <label>Name:</label>
-                            <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
+                            <label htmlFor="new-user-name">Name:</label>
+                            <input id="new-user-name" type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
                         </div>
                         <div className="edit-user-input">
-                            <label>Description:</label>
-                            <textarea className='edit-user-textarea' name="description" placeholder="Description" value={formData.description} onChange={handleChange} />
+                            <label htmlFor="new-user-description">Description:</label>
+                            <textarea id="new-user-description" className="edit-user-textarea" name="description" placeholder="Description" value={formData.description} onChange={handleChange} />
                         </div>
                         <div className="edit-user-input">
-                            <label>Vehicle:</label>
-                            <input type="text" name="vehicle" placeholder="Vehicle" value={formData.vehicle} onChange={handleChange} />
+                            <label htmlFor="new-user-vehicle">Vehicle:</label>
+                            <input id="new-user-vehicle" type="text" name="vehicle" placeholder="Vehicle" value={formData.vehicle} onChange={handleChange} />
                         </div>
                         <div className="edit-user-submit-btn">
-                            <button type="submit">Submit</button>
+                            <button id="new-user-submit-btn" type="submit">Submit</button>
                         </div>
                     </form>
                     <button className="edit-users-modal-close" onClick={() => {

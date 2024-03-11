@@ -59,8 +59,13 @@ export default function NavbarComponent() {
                 </div>
 
                 <div className="action-group">
-                    <div>
-                        <Image src={searchIcon} alt="Search" width={22} height={22} className="search-icon" />
+                    <div className="search-container">
+                        <form role="search" method="get" className="search-form" action="">
+                            <label>
+                                <input type="search" className="search-field" placeholder="Search for Food" name="s" title="Search for:" />
+                            </label>
+                            <input type="submit" className="search-submit" value="Search" />
+                        </form>
                     </div>
                     <Link href="/cart">
                         <Image src={cartIcon} alt="Cart" width={22} height={22} />

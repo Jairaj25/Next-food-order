@@ -81,7 +81,7 @@ export default function ExplorePage() {
                     <div className="explore-banner-input-container">
                         <div className="explore-banner-input-wrapper">
                             <Image className="explore-banner-location-pin" src={locationIcon} alt="Location Pin" height={18} width={18} />
-                            <input className="explore-banner-find-address-input" placeholder="Enter Delivery Address"></input>
+                            <input id="banner-address" className="explore-banner-find-address-input" name="address" autoComplete="off" placeholder="Enter Delivery Address"></input>
                         </div>
                         <div className="explore-banner-find-address-button">Find</div>
                     </div>

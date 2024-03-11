@@ -40,14 +40,14 @@ export default function CartPage() {
     return (
       <div className='empty-cart-container'>
         <div className='empty-cart-image'>
-          <Image src={emptyCartImage} alt="Empty Cart" />
+          <Image priority={true} src={emptyCartImage} alt="Empty Cart" />
         </div>
         <div className='empty-cart-description'>
           <div className='empty-cart-image-subtext'>Good Food is always cooking</div>
           <p className='empty-cart-message'>Your Cart is Empty. Add something from the menu</p>
-          <div className='empty-cart-menu-link'>
-          <Link href="/explore">Browse Menu</Link>
-          </div>
+          <Link href="/explore" className='empty-cart-menu-link'>
+            <p>Browse Menu</p>
+          </Link>
         </div>
       </div>
     )
