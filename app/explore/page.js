@@ -2,7 +2,7 @@
 import locationIcon from "../../assets/location-pin.svg";
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FoodListCards } from "../components/food_cards/index";
 import { FoodCategoryCards } from "../components/food_category_cards/index";
 import { foodCategories } from "../../sample_data/foodcategories";
@@ -14,20 +14,39 @@ import { updateCurrentPage } from "../redux/reducer/mock-api-reducer";
 import "./index.css";
 
 export default function ExplorePage() {
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [filteredProducts, setFilteredProducts] = useState([]);
     const dispatch = useDispatch();
     const products = useSelector(state => state.products);
     const { loading, users, error, currentPage, usersPerPage } = useSelector((state) => state.mockApi);
-
-    // const temp = useSelector((state) => state.mockApi);
-    // console.log(temp);
 
     useEffect(() => {
         dispatch(fetchProducts());
         dispatch(fetchUsers());
     }, [dispatch]);
 
+    useEffect(() => {
+        setFilteredProducts(products)
+    }, [products]);
+
     const handleAddToCart = (item) => {
         dispatch(addToCart(item));
+    };
+
+    useEffect(() => {
+        let tempFilteredProducts = [];
+        if (selectedCategory === null || selectedCategory === "All") {
+            tempFilteredProducts = products;
+        } else {
+            tempFilteredProducts = products.filter(product => product.category.includes(selectedCategory));
+        }
+        setFilteredProducts(tempFilteredProducts);
+
+    }, [selectedCategory, products]);
+
+    const handleCategorySelect = (category) => {
+        setSelectedCategory(category);
+
     };
 
     const indexOfLastUser = currentPage * usersPerPage;
@@ -70,11 +89,15 @@ export default function ExplorePage() {
             </div>
             <div className="explore-food-category-wrapper">
                 {foodCategories.map((category, index) => (
-                    <FoodCategoryCards key={index} {...category} />
+                    <FoodCategoryCards key={index} {...category} handleCategoryFilter={() => handleCategorySelect(category.foodCategory)} />
                 ))}
             </div>
+            {selectedCategory === "All" || selectedCategory === null? 
+            (<div className="explore-food-list-title"><p>Popular Dishes</p></div>) : 
+            (<div className="explore-food-list-title"><p>{selectedCategory} Dishes</p></div>)}
+            
             <div className="explore-food-list-wrapper">
-                {products.map(product => (
+                {filteredProducts.map(product => (
                     <FoodListCards
                         key={product.id}
                         product={product}
@@ -97,7 +120,7 @@ export default function ExplorePage() {
                             {currentUsers.map((user) => (
                                 <div className="explore-user-list-cards" key={user.id}>
                                     <div className="user-list-image">
-                                        <Image src={user.avatar} alt={user.name} width={300} height={304.5}/>
+                                        <Image src={user.avatar} alt={user.name} width={300} height={304.5} />
                                     </div>
                                     <div className="user-list-text">
                                         <div className="user-list-name-desc">

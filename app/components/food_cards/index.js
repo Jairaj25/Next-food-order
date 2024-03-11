@@ -19,6 +19,7 @@ export const FoodListCards = ({ product, onAddToCart }) => {
             price: foodPrice,
             image: image,
             quantity: 1,
+            category,
             restaurant,
         };
         onAddToCart(cartItem);
@@ -43,30 +44,30 @@ export const FoodListCards = ({ product, onAddToCart }) => {
 
 
     return (
-        <div>
+        <div className='food-list-wrapper'>
             <div className='food-list-grid-wrapper'>
                 <div className='food-list-image'>
-                    <Image src={image} alt={foodName} />
+                    <Image className="inner-img" src={image} alt={foodName} />
                 </div>
                 <div className='food-list-name-action-wrapper'>
                     <div className='food-list-name'>
                         <p>{foodName}</p>
                     </div>
-                    <div className="food-list-add-to-cart-button">
-                        {addedToCart ?
-                            (<div className="quantity-buttons">
-                                <button onClick={handleDecreaseQuantity}>-</button>
-                                <span>{quantity}</span>
-                                <button onClick={handleIncreaseQuantity}>+</button>
-                            </div>)
-                            :
-                            (<p onClick={handleAddToCart}>Add to Cart</p>)
-                        }
-                    </div>
                 </div>
                 <div className='food-list-price'>
-                    <p>${foodPrice}</p> <p className='food-list-price-additional-text'> <span></span> {restaurant} <span></span> {category}</p>
+                    <p>${foodPrice}</p> <p className='food-list-price-additional-text'> <span></span> {restaurant} <span></span> {category[0]}</p>
                 </div>
+            </div>
+            <div className="food-list-add-to-cart-button">
+                {addedToCart ?
+                    (<div className="quantity-buttons">
+                        <button onClick={handleDecreaseQuantity}>-</button>
+                        <span>{quantity}</span>
+                        <button onClick={handleIncreaseQuantity}>+</button>
+                    </div>)
+                    :
+                    (<p onClick={handleAddToCart}>Add to Cart</p>)
+                }
             </div>
         </div>
     );

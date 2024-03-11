@@ -28,9 +28,12 @@
 
 .explore-banner-input-wrapper{
     display: inline-flex;
+    align-items: center;
 }
 
 .explore-banner-location-pin{
+    width: 18px;
+    height: 18px;
     z-index: 1;
 }
 
@@ -96,9 +99,16 @@ input.explore-banner-find-address-input {
     background-color: transparent;
 }
 
+.explore-food-list-title{
+    padding: 0 70px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1C2344;
+}
+
 .explore-food-list-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     gap: 40px;
     padding: 70px;
 }

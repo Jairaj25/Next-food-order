@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -18,6 +19,7 @@
 
 html,
 body {
+  font-family: "Monsterrat";
   overflow-x: hidden;
   font-size: 18px;
   color: #1C2344;

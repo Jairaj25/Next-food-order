@@ -1,9 +1,11 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCart, removeFromCart, updateQuantity } from '../redux/reducer/cart-reducer';
 import closeCircle from "../../assets/close-icon.svg";
+import emptyCartImage from "../../assets/empty-cart-img.png";
 import "./index.css";
 
 export default function CartPage() {
@@ -32,11 +34,30 @@ export default function CartPage() {
     dispatch(updateQuantity({ itemId, increment: true }));
   };
 
+  // console.log(cart.items.length);
+
+  if (cart.items.length === 0) {
+    return (
+      <div className='empty-cart-container'>
+        <div className='empty-cart-image'>
+          <Image src={emptyCartImage} alt="Empty Cart" />
+        </div>
+        <div className='empty-cart-description'>
+          <div className='empty-cart-image-subtext'>Good Food is always cooking</div>
+          <p className='empty-cart-message'>Your Cart is Empty. Add something from the menu</p>
+          <div className='empty-cart-menu-link'>
+          <Link href="/explore">Browse Menu</Link>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   if (isClient) {
     return (
       <div className='cart-container'>
         <div className='cart-title'>
-          <p>Your Cart</p>
+          <p>Cart</p>
         </div>
         <div className='cart-items'>
           {cart.items.length > 1 ? (
@@ -59,6 +80,7 @@ export default function CartPage() {
                   </div>
                   <div className='cart-card-name-capsule'>
                     <p>{item.foodName}</p>
+                    <p className='cart-card-category'>{item.category[0]}</p>
                   </div>
                 </div>
               </div>

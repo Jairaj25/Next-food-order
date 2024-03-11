@@ -73,7 +73,13 @@
 
 .menu-options a {
     display: flex;
+    align-items: center;
     gap: 15px;
+}
+
+.menu-options img {
+    width: 18px;
+    height: 18px
 }
 
 

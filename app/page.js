@@ -1,26 +1,23 @@
-import homeImage from "../assets/reactFoodImage.png";
-import Image from 'next/image';
+import landingVideo from '../public/videos/landing-video.mp4';
 import Link from 'next/link';
 import "./index.css";
 
 export default function Home() {
-  return (
-    <div className="home-main-container">
-    <div className="home-text-group">
-        <div className="home-title">
-            Order Food the easy way
-        </div>
-        <div className="home-subtext">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-        </div>
-        <Link href='/explore' className="home-button-wrapper">
-            <p className="order-button">ORDER NOW</p>
-        </Link>
-    </div>
-    <div className="home-image-group">
-        <Image src={homeImage} alt="Home Main" />
-    </div>
-</div>
-  )
+    return (
+        <section className="outter option1">
+            <section className="video-container">
+                <video autoPlay loop playsInline muted>
+                    <source src="/videos/landing-video.mp4" type='video/mp4' />
+                </video>
+                <div className="callout">
+                    <h1>Order Food the easy way</h1>
+                    <div className="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</div>
+                    <Link href='/explore' className="button">
+                        <div className="inner">ORDER NOW</div>
+                    </Link>
+                </div>
+            </section>
+        </section>
+    )
 }
