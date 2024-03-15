@@ -3,11 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity, removeFromCart } from '../../redux/reducer/cart-reducer';
+import Rating from '@mui/material/Rating';
 import Image from 'next/image';
 import "./index.css";
 
 export const FoodListCards = ({ product, onAddToCart }) => {
-    const { id, foodName, image, foodPrice, restaurant, category } = product;
+    const { id, foodName, image, foodPrice, restaurant, category, rating } = product;
     const [addedToCart, setAddedToCart] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
@@ -30,6 +31,7 @@ export const FoodListCards = ({ product, onAddToCart }) => {
             quantity: 1,
             category,
             restaurant,
+            rating
         };
         onAddToCart(cartItem);
         setAddedToCart(true);
@@ -62,22 +64,31 @@ export const FoodListCards = ({ product, onAddToCart }) => {
                     <div className='food-list-name'>
                         <p>{foodName}</p>
                     </div>
+                    <div className="food-list-add-to-cart-button">
+                        {addedToCart ?
+                            (<div className="quantity-buttons">
+                                <button onClick={handleDecreaseQuantity}>-</button>
+                                <span>{quantity}</span>
+                                <button onClick={handleIncreaseQuantity}>+</button>
+                            </div>)
+                            :
+                            (<p onClick={handleAddToCart}>Add to Cart</p>)
+                        }
+                    </div>
                 </div>
                 <div className='food-list-price'>
-                    <p>${foodPrice}</p> <p className='food-list-price-additional-text'> <span></span> {restaurant} <span></span> {category[0]}</p>
+                    <p>${foodPrice}</p>
+                    <p className='food-list-price-additional-text'>
+                        <span className='food-list-separator'></span> {restaurant} <span className='food-list-separator'></span> {category[0]}
+                    </p>
+                    <span className='food-list-separator'></span>
+                    <div className="food-list-rating-container">
+                        <p>{rating}</p>
+                        <Rating name="read-only" precision={0.5} value={rating} readOnly size="small" />
+                    </div>
                 </div>
             </div>
-            <div className="food-list-add-to-cart-button">
-                {addedToCart ?
-                    (<div className="quantity-buttons">
-                        <button onClick={handleDecreaseQuantity}>-</button>
-                        <span>{quantity}</span>
-                        <button onClick={handleIncreaseQuantity}>+</button>
-                    </div>)
-                    :
-                    (<p onClick={handleAddToCart}>Add to Cart</p>)
-                }
-            </div>
+
         </div>
     );
 }

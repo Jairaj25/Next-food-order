@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import websiteLogo from "../../../assets/website-logo.jpeg";
 import searchIcon from "../../../assets/search-icon.svg";
@@ -10,15 +10,19 @@ import leftArrow from "../../../assets/chevron-left3.svg";
 import loginArrow from "../../../assets/login-arrow.svg";
 import signUpIcon from "../../../assets/signup-icon.svg";
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Modal from 'react-modal';
 import "./index.css";
 
 export default function NavbarComponent() {
 
+    const router = useRouter();
     const location = usePathname();
+    const inputRef = useRef(null);
+  
     const [menuOpen, setMenuOpen] = useState(false);
     const [isNavOpen, setIsNavOpen] = useState(false);
+    const [query, setQuery] = useState('');
 
     // Modal.setAppElement('#root');
 
@@ -40,6 +44,21 @@ export default function NavbarComponent() {
         document.body.classList.remove('overflow-hidden');
     };
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const query = formData.get('s');
+
+    if(query.length === 1){
+        return null;
+    } 
+    if (query.trim() !== '') {
+        router.push(`/search?query=${encodeURIComponent(query)}`);
+        setQuery('');
+        inputRef.current.blur();
+      }
+  };
+
     return (
         <>
             <div className="desktop-nav">
@@ -59,10 +78,20 @@ export default function NavbarComponent() {
                 </div>
 
                 <div className="action-group">
-                    <div className="search-container">
-                        <form role="search" method="get" className="search-form" action="">
+                    <div className="nav-search-container">
+                        <form role="search" className="search-form"  onSubmit={handleSearchSubmit}>
                             <label>
-                                <input type="search" className="search-field" placeholder="Search for Food" name="s" title="Search for:" />
+                                <input 
+                                    type="search" 
+                                    className="search-field" 
+                                    placeholder="Search for Food" 
+                                    name="s" 
+                                    title="Search" 
+                                    value={query} 
+                                    onChange={(e) => setQuery(e.target.value)} 
+                                    autoComplete='off'
+                                    ref={inputRef} 
+                                />
                             </label>
                             <input type="submit" className="search-submit" value="Search" />
                         </form>

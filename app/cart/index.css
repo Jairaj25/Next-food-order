@@ -73,7 +73,14 @@
     padding: 0 0 0 30px;
     gap: 20px;
     width: 350px;
-    height: 35px;
+}
+
+.cart-rating-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #757575;
 }
 
 .cart-card-category{
@@ -117,7 +124,7 @@
 
 .clear-cart{
     background: #F5C509;
-    color: #1C2344;
+    color: #FFFFFF;
     width: 150px;
     height: 50px;
     border-radius: 30px;

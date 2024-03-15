@@ -174,7 +174,7 @@
     animation: changeHeight 0.5s forwards;
 }
 
-.search-container {
+.nav-search-container {
     text-align: center
 }
 
@@ -187,8 +187,7 @@
     border: none;
     cursor: pointer;
     height: 40px;
-    margin: 3px 0;
-    padding: 0 0 0 50px;
+    padding: 0 0 0 30px;
     position: relative;
     -webkit-transition: width 400ms ease, background 400ms ease;
     transition: width 400ms ease, background 400ms ease;
@@ -202,8 +201,9 @@
     border-radius: 20px;
     cursor: text;
     outline: 0;
-    width: 430px;
+    width: 28vw;
     color: #1C2344;
+    padding: 0 0 0 50px;
 }
 
 .search-form .search-submit {

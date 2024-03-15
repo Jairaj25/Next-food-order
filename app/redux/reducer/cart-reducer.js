@@ -17,11 +17,14 @@ const loadCartFromStorage = () => {
   if (storedCart) {
     return storedCart;
   } else {
-    return { items: [], total: 0, restaurant: '', image: '' };
+    return { items: [{ price: "", quantity: "", rating: "", restaurant: "", category: [], foodName: "", id: 0, image: {src:"", blurDataURL: "", blurHeight: 0, blurWidth: 0, height: 0, width: 0} }], total: 0, restaurant: '', image: '', rating: '' };
+    // return storedCart;
+    // return { items: [{ price: 12.99, quantity: 1, rating: 4.5, restaurant: "Nepolitan", category: ['Italian', 'Pizza'], foodName: "Margherita Pizza", id: 1, image: {src:"/_next/static/media/pizza-image2.6719a785.jpeg", blurDataURL: "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpizza-image2.6719a785.jpeg&w=8&q=70", blurHeight: 5, blurWidth: 8, height: 405, width: 612} }], total: 12.99, restaurant: 'Nepolitan', image: {src:"/_next/static/media/pizza-image2.6719a785.jpeg", blurDataURL: "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpizza-image2.6719a785.jpeg&w=8&q=70", blurHeight: 5, blurWidth: 8, height: 405, width: 612}, rating: '' }
   }
 };
 
 const saveCartToStorage = (cart) => {
+
   if (typeof window !== 'undefined') {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
@@ -54,17 +57,21 @@ const cartSlice = createSlice({
       if (itemIndex !== -1) {
         const updatedItems = [...state.items];
         const updatedItem = { ...updatedItems[itemIndex] };
-
         if (increment) {
           updatedItem.quantity += 1;
         } else {
           updatedItem.quantity -= 1;
-          if (updatedItem.quantity < 1) {
-            updatedItems.splice(itemIndex, 1);
+          if (updatedItem.quantity < 0) {
+            updatedItem.quantity = 0;
           }
         }
 
-        updatedItems[itemIndex] = updatedItem;
+        if (updatedItem.quantity === 0) {
+          updatedItems.splice(itemIndex, 1);
+        } else {
+          updatedItems[itemIndex] = updatedItem;
+        }
+
         state.items = updatedItems;
       }
 
@@ -82,6 +89,7 @@ const cartSlice = createSlice({
       state.total = 0;
       state.restaurant = '';
       state.image = '';
+      state.rating= '';
 
       saveCartToStorage(state);
     },

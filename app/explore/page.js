@@ -106,8 +106,8 @@ export default function ExplorePage() {
                 ))}
             </div>
             <div className="explore-user-list-container">
-                <div>
-                    <h2>Mock Api Data</h2>
+                <div className="explore-user-list-title">
+                    <p>Mock Api Data</p>
                 </div>
                 {loading ? (
                     <p>Loading...</p>

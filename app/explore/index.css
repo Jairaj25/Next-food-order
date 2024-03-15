@@ -122,6 +122,11 @@ input.explore-banner-find-address-input {
     gap: 100px;
 }
 
+.explore-user-list-title{
+    font-size: 24px;
+    font-weight: 600;
+}
+
 .explore-user-list-wrapper {
     display: flex;
     flex-wrap: wrap;

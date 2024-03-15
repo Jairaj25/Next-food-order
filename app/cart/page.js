@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCart, removeFromCart, updateQuantity } from '../redux/reducer/cart-reducer';
+import Rating from '@mui/material/Rating';
 import closeCircle from "../../assets/close-icon.svg";
 import emptyCartImage from "../../assets/empty-cart-img.png";
 import "./index.css";
@@ -11,16 +12,6 @@ import "./index.css";
 export default function CartPage() {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
-
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const handleClearToCart = () => {
-    dispatch(clearCart());
-  }
 
   const handleRemoveFromCart = (itemId) => {
     dispatch(removeFromCart(itemId));
@@ -34,9 +25,15 @@ export default function CartPage() {
     dispatch(updateQuantity({ itemId, increment: true }));
   };
 
-  // console.log(cart.items.length);
+  const handleClearToCart = () => {
+    dispatch(clearCart());
+  }
 
-  if (cart.items.length === 0) {
+  const handleCheckout = () => {
+    console.log("Checkout lol");
+  }
+
+  if (cart.items?.length === 0) {
     return (
       <div className='empty-cart-container'>
         <div className='empty-cart-image'>
@@ -53,14 +50,13 @@ export default function CartPage() {
     )
   }
 
-  if (isClient) {
     return (
       <div className='cart-container'>
         <div className='cart-title'>
           <p>Cart</p>
         </div>
         <div className='cart-items'>
-          {cart.items.length > 1 ? (
+          {cart.items?.length > 0 ? (
             <div className='cart-card table-titles'>
               <p className='cart-card-name'>Name</p>
               <p className='cart-card-price'>Price</p>
@@ -71,7 +67,7 @@ export default function CartPage() {
                 <p>Total</p>
               </div>
             </div>) : (<></>)}
-          {cart.items.map(item => (
+          {cart.items?.map(item => (
             <div className='cart-card' key={item.id}>
               <div className='cart-card-name'>
                 <div className='cart-card-name-image-container'>
@@ -81,6 +77,10 @@ export default function CartPage() {
                   <div className='cart-card-name-capsule'>
                     <p>{item.foodName}</p>
                     <p className='cart-card-category'>{item.category[0]}</p>
+                    <div className="cart-rating-container">
+                        <p>{item.rating}</p>
+                        <Rating name="read-only" precision={0.5} value={item.rating} readOnly size="small" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -115,9 +115,10 @@ export default function CartPage() {
           <div className='clear-cart' onClick={handleClearToCart}>
             <p>Clear Cart</p>
           </div>
+          <div className='clear-cart' onClick={handleCheckout}>
+            <p>Checkout</p>
+          </div>
         </div>
       </div>
     );
-  };
-  return <></>;
 };
