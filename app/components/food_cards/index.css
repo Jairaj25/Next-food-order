@@ -10,7 +10,6 @@
     font-size: 16px;
     color: #1C2344;
     gap: 10px;
-    cursor: pointer;
 }
 
 .food-list-image {
@@ -46,7 +45,6 @@
     width: fit-content;
     height: 32px;
     margin: 0 5px 0 0;
-    cursor: pointer;
     font-size: 20px;
 }
 
@@ -87,7 +85,7 @@
 .food-list-rating-container{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     font-size: 14px;
     color: #757575;
 }

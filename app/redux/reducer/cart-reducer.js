@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import placeHolder from "../../../assets/pizza-image2.jpeg";
 
 const loadCartFromStorage = () => {
   let storedCart;
@@ -17,7 +18,7 @@ const loadCartFromStorage = () => {
   if (storedCart) {
     return storedCart;
   } else {
-    return { items: [{ price: "", quantity: "", rating: "", restaurant: "", category: [], foodName: "", id: 0, image: {src:"", blurDataURL: "", blurHeight: 0, blurWidth: 0, height: 0, width: 0} }], total: 0, restaurant: '', image: '', rating: '' };
+    return { items: [{ price: 0, quantity: 0, rating: 0, restaurant: "", category: [], foodName: "", id: 0, image: {src: placeHolder, blurDataURL: "", blurHeight:0 , blurWidth: 0, height: 405, width: 612} }], total: 0, restaurant: '', image: {src: placeHolder, blurDataURL: "", blurHeight: 0, blurWidth: 0, height: 405, width: 612}, rating: '' };
     // return storedCart;
     // return { items: [{ price: 12.99, quantity: 1, rating: 4.5, restaurant: "Nepolitan", category: ['Italian', 'Pizza'], foodName: "Margherita Pizza", id: 1, image: {src:"/_next/static/media/pizza-image2.6719a785.jpeg", blurDataURL: "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpizza-image2.6719a785.jpeg&w=8&q=70", blurHeight: 5, blurWidth: 8, height: 405, width: 612} }], total: 12.99, restaurant: 'Nepolitan', image: {src:"/_next/static/media/pizza-image2.6719a785.jpeg", blurDataURL: "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpizza-image2.6719a785.jpeg&w=8&q=70", blurHeight: 5, blurWidth: 8, height: 405, width: 612}, rating: '' }
   }

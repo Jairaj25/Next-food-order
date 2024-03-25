@@ -23,6 +23,7 @@ body {
   overflow-x: hidden;
   font-size: 18px;
   color: #1C2344;
+  cursor: none;
 }
 
 body {
@@ -47,6 +48,11 @@ a {
   outline: none !important;
   text-decoration: none !important;
   color: inherit;
+  cursor: none;
+}
+
+input{
+  cursor: none;
 }
 
 button {
@@ -56,13 +62,14 @@ button {
   margin: 0;
   font: inherit;
   color: inherit;
-  cursor: pointer;
   outline: none;
+  cursor: none;
 }
 
 #root{
   background: #FFFFFF;
 }
+
 
 @media (max-width: 1023px) {
 

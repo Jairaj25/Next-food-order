@@ -7,10 +7,10 @@ export const FoodCategoryCards = ({ foodCategory, image, handleCategoryFilter })
         handleCategoryFilter(foodCategory);
     };
     return (
-        <div className='category-cards-wrapper' onClick={handleClick}>
+        <button className='category-cards-wrapper' onClick={handleClick}>
             <Image src={image} alt={foodCategory} width={22} height={22} />
-            <p>{foodCategory}</p>
-        </div>
+            <span>{foodCategory}</span>
+        </button>
     );
 }
 

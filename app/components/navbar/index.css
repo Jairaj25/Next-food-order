@@ -33,10 +33,6 @@
     background: linear-gradient(to top, #F29F00 50%, transparent 100%);
 }
 
-.search-icon {
-    cursor: pointer;
-}
-
 .website-logo {
     margin-right: 50px;
 }
@@ -53,7 +49,6 @@
 }
 
 .menu-icon {
-    cursor: pointer;
     padding: 10px;
 }
 
@@ -185,21 +180,20 @@
     background-repeat: no-repeat;
     background-size: 24px 24px;
     border: none;
-    cursor: pointer;
     height: 40px;
     padding: 0 0 0 30px;
     position: relative;
     -webkit-transition: width 400ms ease, background 400ms ease;
     transition: width 400ms ease, background 400ms ease;
     width: 0px;
-    cursor: pointer;
+    cursor: none;
 }
 
 .search-field:focus {
     background-color: #FFF;
     border: 2px solid #F29F00;
     border-radius: 20px;
-    cursor: text;
+    cursor: none;
     outline: 0;
     width: 28vw;
     color: #1C2344;

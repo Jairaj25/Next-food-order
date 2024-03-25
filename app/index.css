@@ -37,7 +37,6 @@
     border-radius: 70px;
     width: 10rem;
     height: 3.8rem;
-    cursor: pointer;
 }
 
 .home-image-group {
@@ -121,13 +120,15 @@ video {
     font-size: 5vw;
     font-weight: 700;
     color: #FFFFFF;
-    text-shadow: 0px 4px 3px rgba(0,0,0,0.3)
+    text-shadow: 0px 2px 3px rgba(0,0,0,0.3)
 }
 
 .desc{
     color: #FFFFFF; 
     text-shadow: 0px 4px 3px rgba(0,0,0,0.3)
 }
+
+
 
 @media (max-width: 400px) {
     .callout h1 {

@@ -72,7 +72,7 @@ export const FoodListCards = ({ product, onAddToCart }) => {
                                 <button onClick={handleIncreaseQuantity}>+</button>
                             </div>)
                             :
-                            (<p onClick={handleAddToCart}>Add to Cart</p>)
+                            (<button onClick={handleAddToCart}>Add to Cart</button>)
                         }
                     </div>
                 </div>
