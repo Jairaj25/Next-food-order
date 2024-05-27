@@ -215,7 +215,7 @@
     padding: 0 0 0 50px;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 1024px) {
     .search-field {
         cursor: none;
     }
