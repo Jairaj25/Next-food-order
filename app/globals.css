@@ -23,7 +23,6 @@ body {
   overflow-x: hidden;
   font-size: 18px;
   color: #1C2344;
-  cursor: none;
 }
 
 body {
@@ -35,11 +34,11 @@ body {
   background: #FFFFFF;
 }
 
-.overflow-hidden{
+.overflow-hidden {
   overflow: hidden;
 }
 
-.pointer-cursor{
+.pointer-cursor {
   cursor: none;
 }
 
@@ -48,15 +47,26 @@ a {
   outline: none !important;
   text-decoration: none !important;
   color: inherit;
-  cursor: none;
 }
 
-div {
-  cursor: none;
-}
+@media screen and (min-width: 720px) {
 
-input{
-  cursor: none;
+  html,
+  body {
+    cursor: none;
+  }
+
+  a {
+    cursor: none;
+  }
+
+  div {
+    cursor: none;
+  }
+
+  input {
+    cursor: none;
+  }
 }
 
 button {
@@ -70,18 +80,18 @@ button {
   cursor: none;
 }
 
-#root{
+#root {
   background: #FFFFFF;
 }
 
-.nav-bar{
+.nav-bar {
   width: 100%;
   z-index: 999;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #FFFFFF;
 }
 
-@media  (max-width: 1023px) {
+@media (max-width: 1023px) {
 
   html,
   body {

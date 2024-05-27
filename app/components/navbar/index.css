@@ -62,7 +62,7 @@
     font-size: 18px;
 }
 
-.desktop-options{
+.desktop-options {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -70,7 +70,7 @@
     gap: 15px;
 }
 
-.desktop-logout-btn{
+.desktop-logout-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +87,7 @@
     height: 18px
 }
 
-.user-options-close-btn-wrapper{
+.user-options-close-btn-wrapper {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -215,6 +215,16 @@
     padding: 0 0 0 50px;
 }
 
+@media screen and (min-width: 720px) {
+    .search-field {
+        cursor: none;
+    }
+
+    .search-field:focus {
+        cursor: none;
+    }
+}
+
 .search-form .search-submit {
     display: none;
 }
@@ -226,9 +236,9 @@
     bottom: 0;
     width: 17%;
     background-color: white;
-    outline: none; 
+    outline: none;
     z-index: 9999;
-  background-image: linear-gradient(#EED308, #ED5F10);
+    background-image: linear-gradient(#EED308, #ED5F10);
 }
 
 .user-options-overlay {
@@ -239,12 +249,13 @@
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.user-options-modal.ReactModal__Content{
+
+.user-options-modal.ReactModal__Content {
     right: -800px;
     transition: right 0.3s ease-in-out;
 }
 
-.user-options-modal.ReactModal__Content--after-open{
+.user-options-modal.ReactModal__Content--after-open {
     right: 0px;
 }
 
