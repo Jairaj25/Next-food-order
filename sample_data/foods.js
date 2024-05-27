@@ -1,0 +1,85 @@
+import pizza from "../assets/pizza-image2.jpeg";
+import spaghettiBolognese from "../assets/bolognese-spaghetti.jpeg";
+import classicBurger from "../assets/classic-burger.jpeg";
+import caeserSalad from "../assets/Caeser-Salad.jpeg";
+import chickenTikka from "../assets/chicken-tikka-masala.jpeg";
+import vegSushiRoll from "../assets/veg-sushi-roll.jpeg";
+import hamSandwich from "../assets/ham-sandwich.jpeg";
+import mushroomRisotto from "../assets/Mushroom-Risotto.jpeg";
+import chocolateBrownieSundae from "../assets/Chocolate-Brownie-Sundae.jpeg";
+import greekGyroWrap from "../assets/Greek-Gyro-Wrap.jpg";
+
+
+export const foods = [
+    {id: 1, foodName: 'Margherita Pizza', image: pizza, foodPrice: 12.99, restaurant: "Nepolitan", category: ["Italian", "Pizza"], rating: 4.5 },
+    {id: 2, foodName: 'Classic Burger', image: classicBurger, foodPrice: 8.49, restaurant: "Beefer Club", category: ["American", "Burger"], rating: 5 },
+    {id: 3, foodName: 'Spaghetti Bolognese', image: spaghettiBolognese, foodPrice: 10.99, restaurant: "Nepolitan", category: [ "Italian", "Pasta"], rating: 4 },
+    {id: 4, foodName: 'Caesar Salad', image: caeserSalad, foodPrice: 6.99, restaurant: "Deep Cafe", category: ["Salads"], rating: 2.5 },
+    {id: 5, foodName: 'Chicken Tikka Masala', image: chickenTikka, foodPrice: 14.99, restaurant: "Vegasa", category: [ "North Indian", "Indian"], rating: 4 },
+    {id: 6, foodName: 'Vegetarian Sushi Roll', image: vegSushiRoll, foodPrice: 9.99, restaurant: "Vegan Cafe", category: ["Japanese", "Sushi", "Asian"], rating: 3 },
+    {id: 7, foodName: 'Ham Sandwich', image: hamSandwich, foodPrice: 11.49, restaurant: "Cafeteria", category: ["American", "Sandwich"], rating: 3.5 },
+    {id: 8, foodName: 'Mushroom Risotto', image: mushroomRisotto, foodPrice: 12.99, restaurant: "Nepolitan", category: ["Italian", "Pasta"], rating: 4 },
+    {id: 9, foodName: 'Chocolate Brownie Sundae', image: chocolateBrownieSundae, foodPrice: 7.99, restaurant: "Starbucks", category: ["Dessert"], rating: 5 },
+    {id: 10, foodName: 'Greek Gyro Wrap', image: greekGyroWrap, foodPrice: 10.49, restaurant: "Cafeteria", category: ["American", "Burrito"], rating: 2.5 },
+    {id: 11, foodName: 'Caprese Salad', image: classicBurger, foodPrice: 8.99, restaurant: "Fresh Bites", category: ["Italian"], rating: 4.2 },
+    {id: 12, foodName: 'Tiramisu', image: classicBurger, foodPrice: 6.99, restaurant: "Dolce Vita", category: ["Italian"], rating: 4.5 },
+    {id: 13, foodName: 'Penne Arrabbiata', image: classicBurger, foodPrice: 12.49, restaurant: "Spicy Delight", category: ["Italian", "Pasta"], rating: 4.4 },
+    {id: 14, foodName: 'Chicken Wings', image: classicBurger, foodPrice: 10.99, restaurant: "WingHouse", category: ["American"], rating: 4.8 },
+    {id: 15, foodName: 'Mac and Cheese', image: classicBurger, foodPrice: 8.49, restaurant: "Cheesy Delight", category: ["American"], rating: 4.5 },
+    {id: 16, foodName: 'New York Cheesecake', image: classicBurger, foodPrice: 7.99, restaurant: "Big Apple Bakery", category: ["American"], rating: 4.6 },
+    {id: 17, foodName: 'Philly Cheesesteak', image: classicBurger, foodPrice: 13.99, restaurant: "City of Brotherly Love", category: ["American", "Sandwich"], rating: 4.4 },
+    {id: 18, foodName: 'Chicken Teriyaki', image: classicBurger, foodPrice: 12.99, restaurant: "Tokyo Grill", category: ["Japanese", "Asian"], rating: 4.4 },
+    {id: 19, foodName: 'Pad See Ew', image: classicBurger, foodPrice: 11.49, restaurant: "Bangkok Cafe", category: ["Thai", "Asian"], rating: 4.6 },
+    {id: 20, foodName: 'General Tso\'rs r', image: classicBurger, foodPrice: 14.99, restaurant: "Dragon Palace", category: ["Chinese", "Asian"], rating: 4.3 },
+    {id: 21, foodName: 'Nachos Supreme', image: classicBurger, foodPrice: 8.99, restaurant: "Fiesta Time", category: ["Mexican"], rating: 4.8 },
+    {id: 22, foodName: 'Enchiladas', image: classicBurger, foodPrice: 11.49, restaurant: "Casa de Enchiladas", category: ["Mexican", "Entrees"], rating: 4.5 },
+    {id: 23, foodName: 'Guacamole', image: classicBurger, foodPrice: 6.99, restaurant: "Avocado Cafe", category: ["Mexican"], rating: 4.3 },
+    {id: 24, foodName: 'Fish Tacos', image: classicBurger, foodPrice: 13.99, restaurant: "Seaside Grill", category: ["Mexican", "Entrees"], rating: 4.4 },
+    {id: 25, foodName: 'Queso Dip', image: classicBurger, foodPrice: 7.99, restaurant: "Cheesy Fiesta", category: ["Mexican"], rating: 4.7 },
+    {id: 26, foodName: 'Green Curry', image: classicBurger, foodPrice: 12.99, restaurant: "Siam Spice", category: ["Thai", "Curry"], rating: 4.3 },
+    {id: 27, foodName: 'Mango Sticky Rice', image: classicBurger, foodPrice: 8.99, restaurant: "Tropical Treats", category: ["Thai"], rating: 4.6 },
+    {id: 28, foodName: 'Pineapple Fried Rice', image: classicBurger, foodPrice: 10.99, restaurant: "Island Flavors", category: ["Thai", "Rice"], rating: 4.7 },
+    {id: 29, foodName: 'Red Curry', image: classicBurger, foodPrice: 13.99, restaurant: "Spicy Basil", category: ["Thai", "Curry"], rating: 4.2 },
+    {id: 30, foodName: 'Vegan Burger', image: classicBurger, foodPrice: 10.99, restaurant: "Plant-Based Grill", category: ["Vegan", "Burger"], rating: 4.8 },
+    {id: 31, foodName: 'Quinoa Salad', image: classicBurger, foodPrice: 8.99, restaurant: "Green Leaf Cafe", category: ["Vegan"], rating: 4.6 },
+    {id: 32, foodName: 'Tofu Stir Fry', image: classicBurger, foodPrice: 11.49, restaurant: "Veggie Delight", category: ["Vegan", "Entrees"], rating: 4.5 },
+    {id: 33, foodName: 'Avocado Toast', image: classicBurger, foodPrice: 7.99, restaurant: "Healthy Haven", category: ["Vegan", "Breakfast"], rating: 4.3 },
+    {id: 34, foodName: 'Chickpea Curry', image: classicBurger, foodPrice: 13.49, restaurant: "Spice Kingdom", category: ["Vegan", "Curry"], rating: 4.4 },
+    {id: 35, foodName: 'Banoffee Pie', image: classicBurger, foodPrice: 8.49, restaurant: "Sweet Indulgence", category: ["Dessert"], rating: 4.8 },
+    {id: 36, foodName: 'Chocolate Lava Cake', image: classicBurger, foodPrice: 7.99, restaurant: "Decadent Desserts", category: ["Dessert"], rating: 4.7 },
+    {id: 37, foodName: 'Strawberry Cheesecake', image: classicBurger, foodPrice: 9.99, restaurant: "Berry Bliss Bakery", category: ["Dessert"], rating: 4.6 },
+    {id: 38, foodName: 'Lemon Meringue Pie', image: classicBurger, foodPrice: 8.99, restaurant: "Citrus Delights", category: ["Dessert"], rating: 4.5 },
+    {id: 39, foodName: 'Creme Brulee', image: classicBurger, foodPrice: 10.49, restaurant: "French Flavors", category: ["Dessert"], rating: 4.4 },
+    {id: 40, foodName: 'Iced Coffee', image: classicBurger, foodPrice: 4.99, restaurant: "Caffeine Fix", category: ["Beverages", "Coffee"], rating: 4.7 },
+    {id: 41, foodName: 'Fresh Orange Juice', image: classicBurger, foodPrice: 3.99, restaurant: "Citrus Squeeze", category: ["Beverages", "Juice"], rating: 4.5 },
+    {id: 42, foodName: 'Mango Smoothie', image: classicBurger, foodPrice: 5.49, restaurant: "Tropical Bliss", category: ["Beverages", "Smoothie"], rating: 4.6 },
+    {id: 43, foodName: 'Green Tea', image: classicBurger, foodPrice: 2.99, restaurant: "Zen Garden", category: ["Beverages", "Tea"], rating: 4.4 },
+    {id: 44, foodName: 'Classic Milkshake', image: classicBurger, foodPrice: 6.49, restaurant: "Shake Shack", category: ["Beverages", "Milkshake"], rating: 4.8 },
+    {id: 45, foodName: 'Hot Chocolate', image: classicBurger, foodPrice: 4.49, restaurant: "Cozy Cafe", category: ["Beverages", "Hot Drink"], rating: 4.3 },
+    {id: 46, foodName: 'Chicken Nuggets', image: classicBurger, foodPrice: 6.99, restaurant: "Nugget Nation", category: ["Sides"], rating: 4.6 },
+    {id: 47, foodName: 'Cheese Fries', image: classicBurger, foodPrice: 5.49, restaurant: "Fry Factory", category: ["Sides"], rating: 4.5 },
+    {id: 48, foodName: 'Hot Dog', image: classicBurger, foodPrice: 3.99, restaurant: "Doggie Diner", category: ["Sides"], rating: 4.3 },
+    {id: 49, foodName: 'Fish and Chips', image: classicBurger, foodPrice: 9.99, restaurant: "Seaside Shack", category: ["Sides"], rating: 4.7 },
+    {id: 50, foodName: 'Bruschetta', image: classicBurger, foodPrice: 7.49, restaurant: "Italian Bistro", category: ["Appetizers"], rating: 4.5 },
+    {id: 51, foodName: 'Spinach Artichoke Dip', image: classicBurger, foodPrice: 8.99, restaurant: "Cheesy Bites", category: ["Appetizers"], rating: 4.6 },
+    {id: 52, foodName: 'Mozzarella Sticks', image: classicBurger, foodPrice: 6.49, restaurant: "Cheese Haven", category: ["Appetizers"], rating: 4.4 },
+    {id: 53, foodName: 'Garlic Bread', image: classicBurger, foodPrice: 5.99, restaurant: "Garlic Kingdom", category: ["Appetizers"], rating: 4.3 },
+    {id: 54, foodName: 'Stuffed Mushrooms', image: classicBurger, foodPrice: 8.49, restaurant: "Mushroom Magic", category: ["Appetizers"], rating: 4.7 },
+    {id: 55, foodName: 'Fried Calamari', image: classicBurger, foodPrice: 9.99, restaurant: "Seafood Sensation", category: ["Appetizers"], rating: 4.2 },
+    {id: 56, foodName: 'Chicken Noodle Soup', image: classicBurger, foodPrice: 6.99, restaurant: "Comfort Kitchen", category: ["Soups"], rating: 4.8 },
+    {id: 57, foodName: 'Tomato Basil Soup', image: classicBurger, foodPrice: 5.99, restaurant: "Fresh & Savory", category: ["Soups"], rating: 4.5 },
+    {id: 58, foodName: 'Lentil Soup', image: classicBurger, foodPrice: 4.99, restaurant: "Healthy Harvest", category: ["Soups"], rating: 4.3 },
+    {id: 59, foodName: 'Clam Chowder', image: classicBurger, foodPrice: 8.49, restaurant: "Seafood Galore", category: ["Soups"], rating: 4.6 },
+    {id: 60, foodName: 'Pho', image: classicBurger, foodPrice: 9.99, restaurant: "Vietnamese Delight", category: ["Soups"], rating: 4.4 },
+    {id: 61, foodName: 'French Onion Soup', image: classicBurger, foodPrice: 7.99, restaurant: "Parisian Cafe", category: ["Soups"], rating: 4.7 },
+    {id: 62, foodName: 'Cobb Salad', image: classicBurger, foodPrice: 10.99, restaurant: "Fresh Greens", category: ["Salads"], rating: 4.6 },
+    {id: 63, foodName: 'Caesar Salad', image: classicBurger, foodPrice: 8.99, restaurant: "Roman Delights", category: ["Salads"], rating: 4.3 },
+    {id: 64, foodName: 'Spinach Salad', image: classicBurger, foodPrice: 8.49, restaurant: "Green Garden", category: ["Salads"], rating: 4.8 },
+    {id: 65, foodName: 'French Fries', image: classicBurger, foodPrice: 3.99, restaurant: "Golden Crisp", category: ["Sides"], rating: 4.5 },
+    {id: 66, foodName: 'Onion Rings', image: classicBurger, foodPrice: 4.49, restaurant: "Crispy Circles", category: ["Sides"], rating: 4.6 },
+    {id: 67, foodName: 'Mashed Potatoes', image: classicBurger, foodPrice: 3.49, restaurant: "Creamy Comfort", category: ["Sides"], rating: 4.4 },
+    {id: 68, foodName: 'Garlic Bread', image: classicBurger, foodPrice: 3.99, restaurant: "Garlic Kingdom", category: ["Sides"], rating: 4.7 },
+    {id: 69, foodName: 'Sweet Potato Fries', image: classicBurger, foodPrice: 4.49, restaurant: "Sweet Taters", category: ["Sides"], rating: 4.2 },
+    
+  ];
+  

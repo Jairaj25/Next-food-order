@@ -1,0 +1,113 @@
+.food-list-wrapper{
+    height: 383.5px;
+}
+
+.food-list-grid-wrapper {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    color: #1C2344;
+    gap: 10px;
+}
+
+.food-list-image {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.inner-img {
+    height: 304.5px;
+    transition: 1s;
+    object-fit: cover;
+}
+
+.food-list-wrapper:hover .inner-img {
+    transform: scale(1.1);
+}
+
+.food-list-name-action-wrapper {
+    margin: 0 0 5px 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 20px;
+}
+
+.food-list-name {
+    width: fit-content;
+    height: fit-content;
+}
+
+.food-list-add-to-cart-button {
+    width: fit-content;
+    height: 32px;
+    margin: 0 5px 0 0;
+    font-size: 20px;
+}
+
+.quantity-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.quantity-buttons button {
+    width: 30px;
+    border: 1px solid #F29F00;
+    border-radius: 10px;
+    /* background-color: #FAE8A7;
+    color: #FFFFFF; */
+}
+
+.food-list-price {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+.food-list-price-additional-text {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: #757575;
+}
+
+.food-list-price .food-list-separator {
+    width: 3px;
+    height: 3px;
+    background-color: #757575;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.food-list-rating-container{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #757575;
+}
+
+@media (max-width: 768px) {
+    .food-list-grid-wrapper {
+        font-size: 16px;
+    }
+
+    .food-list-price-additional-text {
+        font-size: 14px;
+    }
+
+    .food-list-price .food-list-separator {
+        width: 3px;
+        height: 3px;
+        margin: 0 5px;
+    }
+
+    .food-list-wrapper:hover .inner-img {
+        transform: none;
+    }
+}

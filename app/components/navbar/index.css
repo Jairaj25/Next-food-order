@@ -1,0 +1,317 @@
+.desktop-nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 70px;
+    color: #1C2344;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
+}
+
+.mobile-nav {
+    display: none;
+    background-color: #FFFFFF;
+}
+
+.nav-group a {
+    color: #1C2344;
+}
+
+.nav-bar a.active,
+.nav-bar div.active {
+    color: #F29F00;
+}
+
+.nav-bar a.active::after,
+.nav-bar div.active::after {
+    content: '';
+    display: block;
+    position: relative;
+    left: 0px;
+    bottom: -31px;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to top, #F29F00 50%, transparent 100%);
+}
+
+.website-logo {
+    margin-right: 50px;
+}
+
+.nav-group,
+.action-group {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.hamburger-menu {
+    position: relative;
+}
+
+.menu-icon {
+    padding: 10px;
+}
+
+.menu-options {
+    margin: 50px 0 0 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 18px;
+}
+
+.desktop-options{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 0 0 35px;
+    gap: 15px;
+}
+
+.desktop-logout-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100%;
+    background: #F29F00;
+    width: 130px;
+    height: 45px;
+    border-radius: 30px;
+    color: #FFFFFF;
+}
+
+.menu-options img {
+    width: 18px;
+    height: 18px
+}
+
+.user-options-close-btn-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    background-color: #F5C509;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(0);
+    overflow: hidden;
+}
+
+.mobile-nav-menu-closed {
+    transform: translateX(-100%);
+}
+
+.mobile-nav-overlay-close-icon {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.mobile-nav-overlay *:focus {
+    outline: none;
+}
+
+.mobile-nav-overlay-close-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #FFFCED;
+    margin: 50px 0 0;
+}
+
+#root.modal-open {
+    overflow: hidden;
+    transform: scale(0.8) translateX(50%) translateY(-10%);
+    transform-origin: right center;
+    transition: transform 0.5s linear;
+    animation: changeHeight2 0.5s forwards;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+    border-radius: 20px 0 0 20px;
+    height: 1025px;
+    pointer-events: none;
+}
+
+#root {
+    transition: transform 0.5s linear;
+    transform-origin: right center;
+    animation: changeHeight 5s forwards;
+    z-index: 5;
+}
+
+@keyframes changeHeight2 {
+
+    from {
+        min-height: auto;
+    }
+
+    to {
+        min-height: 1025px;
+    }
+}
+
+@keyframes changeHeight {
+    0% {
+        min-height: 1025px;
+    }
+
+    100% {
+        min-height: auto;
+    }
+}
+
+.mobile-nav-overlay.modal-open+#root {
+    transition: transform 0.5s linear;
+    transform-origin: right center;
+    margin: 80%;
+    transform-origin: right center;
+    animation: changeHeight 0.5s forwards;
+}
+
+.nav-search-container {
+    text-align: center
+}
+
+.search-field {
+    background-color: transparent;
+    background-image: url("../../../assets/search-icon.svg");
+    background-position: 5px center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    border: none;
+    height: 40px;
+    padding: 0 0 0 30px;
+    position: relative;
+    -webkit-transition: width 400ms ease, background 400ms ease;
+    transition: width 400ms ease, background 400ms ease;
+    width: 0px;
+    cursor: none;
+}
+
+.search-field:focus {
+    background-color: #FFF;
+    border: 2px solid #F29F00;
+    border-radius: 20px;
+    cursor: none;
+    outline: 0;
+    width: 28vw;
+    color: #1C2344;
+    padding: 0 0 0 50px;
+}
+
+.search-form .search-submit {
+    display: none;
+}
+
+.user-options-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 17%;
+    background-color: white;
+    outline: none; 
+    z-index: 9999;
+  background-image: linear-gradient(#EED308, #ED5F10);
+}
+
+.user-options-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.user-options-modal.ReactModal__Content{
+    right: -800px;
+    transition: right 0.3s ease-in-out;
+}
+
+.user-options-modal.ReactModal__Content--after-open{
+    right: 0px;
+}
+
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 60px;
+        background-color: #ffffff;
+        color: #1C2344;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s linear;
+    }
+
+    .mobile-nav-hamburger img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .mobile-nav-hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+
+    }
+
+    .nav-content div.active {
+        color: #F29F00;
+        background-color: #FFFFFF;
+        border-radius: 30px;
+    }
+
+    .mobile-nav-home-link,
+    .mobile-nav-about-link,
+    .mobile-nav-privacy-link,
+    .mobile-nav-cart-link,
+    .mobile-nav-login-link,
+    .mobile-nav-signup-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 50px;
+    }
+
+    .mobile-nav-cart-link,
+    .mobile-nav-login-link,
+    .mobile-nav-signup-link {
+
+        justify-content: flex-start;
+        padding: 0 0 0 40px;
+    }
+
+    .mobile-nav-cart-link a,
+    .mobile-nav-login-link a,
+    .mobile-nav-signup-link a {
+        display: flex;
+        justify-content: flex-start;
+        gap: 20px;
+    }
+}

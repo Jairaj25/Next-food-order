@@ -1,0 +1,47 @@
+#cursor-dot,
+#cursor-dot-outline {
+  z-index: 99999;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  transition: transform .3s cubic-bezier(.75,-1.27,.3,2.33), opacity .3s cubic-bezier(.75,-.27,.3,1.33);
+}
+
+#cursor-dot {
+  width: 15px;
+  height: 15px;
+  background: #F5C509;
+}
+
+#cursor-dot-outline {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+#cursor-dot-outline:before {
+  background-color: #000;
+  border-radius: 100%;
+  content: "";
+  display: block;
+  height: 100%;
+  opacity: 0;
+  transition: all .7s ease;
+  width: 100%;
+  z-index: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  #cursor-dot,
+  #cursor-dot-outline {
+  display: none;
+}
+}

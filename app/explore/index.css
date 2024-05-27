@@ -1,0 +1,263 @@
+.explore-main-container {
+    padding: 50px 0;
+}
+
+.explore-main-banner {
+    margin: 0 70px;
+    height: 450px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 75px;
+    color: #1C2344;
+    background: url("../../assets/banner-image.jpg") no-repeat;
+    background-size: cover;
+}
+
+.explore-banner-order-text-container {
+    font-size: 36px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.explore-banner-input-container {
+    display: flex;
+}
+
+.explore-banner-input-wrapper{
+    display: inline-flex;
+    align-items: center;
+}
+
+.explore-banner-location-pin{
+    width: 18px;
+    height: 18px;
+    z-index: 1;
+}
+
+.explore-banner-find-address-input,
+.explore-banner-find-address-button {
+    height: 40px;
+}
+
+.explore-banner-find-address-input {
+    width: 250px;
+    border-width: 0;
+    border-radius: 10px 0 0 10px;
+    padding: 0 0 0 30px;
+    margin: 0 0 0 -25px;
+}
+
+input.explore-banner-find-address-input {
+    font-size: 18px;
+    color: #1C2344;
+}
+
+.explore-banner-find-address-input:focus {
+    outline-width: 0;
+}
+
+.explore-banner-find-address-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5C509;
+    color: #FFFFFF;
+    width: 75px;
+    border-radius: 0 10px 10px 0;
+}
+
+.explore-banner-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.explore-banner-order-text-logo {
+    width: 100px;
+    height: 40px;
+    background: url("../../assets/icon-logo.png") no-repeat;
+    background-size: contain;
+}
+
+.explore-food-category-wrapper {
+    margin: 50px 0;
+    display: flex;
+    gap: 20px;
+    overflow: auto;
+    padding: 0 70px;
+    color: #1C2344;
+}
+
+.explore-food-category-wrapper::-webkit-scrollbar {
+    width: 0.5px;
+}
+
+.explore-food-category-wrapper::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.explore-food-list-title{
+    padding: 0 70px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1C2344;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.explore-food-list-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 40px;
+    padding: 70px;
+}
+
+.explore-user-list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 70px;
+    gap: 100px;
+}
+
+.explore-user-list-title{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.explore-user-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.explore-user-list-cards{
+    width: 40vw;
+    display: flex;
+    gap: 30px;
+    border-radius: 30px;
+    padding: 0 30px 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-list-text{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: #1C2344;
+    padding: 20px 0;
+}
+
+.user-list-name-desc{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-list-image img {
+    width: 300px;
+    height: 100%;
+    border-radius: 30px 0 0 30px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.explore-users-pagination-wrapper{
+    display: flex;
+    gap: 50px;
+}
+
+.disable-btn{
+    opacity: 0.6;
+    cursor: not-allowed;
+    color: #ACACAC;
+}
+
+.link-to-mock-api-container{
+    width: 400px;
+    height: 40px;
+    background: #F29F00;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+@media screen and (min-width: 769px) and (max-width: 880px) {
+
+    .explore-food-list-wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .explore-main-banner {
+        padding: 0 0 0 50px;
+        background-position: 20%;
+        background-size: cover;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .explore-main-container {
+        background-color: #FFFFFF;
+        padding: 20px 0;
+    }
+
+    .explore-main-banner {
+        padding: 0;
+        margin: 0 20px;
+        background-position: 20%;
+        background-size: cover;
+        justify-content: center;
+    }
+
+    .explore-banner-content {
+        gap: 15px;
+    }
+
+    .explore-food-category-wrapper {
+        padding: 0 20px;
+        margin: 25px 0;
+    }
+
+    .explore-food-list-wrapper {
+        padding: 0 20px;
+    }
+    input.explore-banner-find-address-input {
+        font-size: 14px;
+    }
+
+    .explore-banner-order-text-container {
+        font-size: 28px;
+    }
+
+    .explore-food-list-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+}
+
+@media (max-width: 370px) {
+    .explore-main-banner {
+        padding: 0 ;
+        justify-content: center;
+    }
+
+    .explore-banner-find-address-input {
+        width: 180px;
+    }
+
+    .explore-banner-order-text-logo {
+        width: 75px;
+        height: 30px;
+    }
+}

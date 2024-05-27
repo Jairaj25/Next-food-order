@@ -1,0 +1,217 @@
+.explore-user-list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 70px;
+    gap: 100px;
+}
+
+.explore-user-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.explore-user-list-cards{
+    width: 40vw;
+    display: flex;
+    gap: 30px;
+    border-radius: 30px;
+    padding: 0 30px 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mock-user-list-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #1C2344;
+    padding: 20px 0;
+}
+
+.user-list-info-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.user-list-name-desc{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-list-image img {
+    width: 300px;
+    height: 100%;
+    border-radius: 30px 0 0 30px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.user-list-action{
+    display: flex;
+    gap: 30px;
+}
+
+.explore-users-pagination-wrapper{
+    display: flex;
+    gap: 50px;
+}
+
+.edit-users-modal{
+    border-radius: 14px;
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    left: 545px;
+    top: 245px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    outline: none;
+    padding: 30px;
+}
+
+.edit-users-container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    color: #1C2344;
+}
+
+.edit-users-form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+}
+
+.edit-users-form input, textarea{
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #F29F00; 
+}
+
+.edit-user-input{
+    display: flex;
+    gap: 20px;
+}
+
+.edit-user-submit-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-user-submit-btn button{
+    width: 115px;
+    height: 50px;
+    background-color: #F29F00;
+    border-radius: 30px;
+    color: #FFFFFF;
+}
+
+.delete-user-modal{
+    border-radius: 14px;
+    height: 240px;
+    width: 500px;
+    position: absolute;
+    left: 545px;
+    top: 245px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    outline: none;
+    padding: 30px;
+}
+
+.delete-user-container{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    align-items: center;
+    height: 100%;
+    color: #1C2344;
+}
+
+.delete-user-buttons{
+    display: flex;
+    gap: 50px;
+}
+
+.delete-user-submit-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-user-submit-btn button{
+    width: 115px;
+    height: 50px;
+    background-color: #F29F00;
+    border-radius: 30px;
+    color: #FFFFFF;
+}
+
+.mock-search-container{
+    margin: 50px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.mock-search-input{
+    width: 80vw;
+    height: 35px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #F29F00;
+    font-size: 16px;
+}
+
+.add-user-prompt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 50px 0;
+}
+
+.pagination-current-page{
+    width: 40px;
+    height: 40px;
+    border: 1px solid #1C2344;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-user-textarea{
+    width: 300px;
+    height: 109px;
+}
+
+.alignself-baseline{
+    width: 100%;
+    align-self: baseline;
+    display: flex;
+    justify-content: space-between;
+}
+.users-api-error-container{
+    height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.loading-container{
+    height: calc(100vh - 90px);
+}
