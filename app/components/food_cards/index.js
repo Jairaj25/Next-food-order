@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity } from '../../redux/reducer/cart-reducer';
+import { useUser } from '@auth0/nextjs-auth0/client';
 import Rating from '@mui/material/Rating';
 import Image from 'next/image';
 import placeholder from '../../../assets/bolognese-spaghetti.jpeg';
@@ -32,7 +33,7 @@ export const FoodListCards = ({ product, onAddToCart }) => {
             quantity: 1,
             category,
             restaurant,
-            rating
+            rating,
         };
         onAddToCart(cartItem);
         setAddedToCart(true);

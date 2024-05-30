@@ -19,7 +19,6 @@ export default function NavbarComponent() {
     const router = useRouter();
     const location = usePathname();
     const inputRef = useRef(null);
-
     const [menuOpen, setMenuOpen] = useState(false);
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [query, setQuery] = useState('');
