@@ -1,16 +1,28 @@
-import { FETCH_PRODUCTS, SEARCH_PRODUCTS } from '../action/product-actions';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchFoods } from '../action/product-actions';
 
-const initialState = [];
+const foodSlice = createSlice({
+  name: 'foods',
+  initialState: {
+    foods: [],
+    status: 'idle',
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchFoods.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchFoods.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.foods = action.payload;
+      })
+      .addCase(fetchFoods.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      });
+  },
+});
 
-const productReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_PRODUCTS:
-      return action.payload;
-    case SEARCH_PRODUCTS:
-      return action.payload;
-    default:
-      return state;
-  }
-};
-
-export default productReducer;
+export default foodSlice.reducer;

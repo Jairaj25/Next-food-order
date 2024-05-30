@@ -7,7 +7,7 @@ import { FoodListCards } from "../components/food_cards/index";
 import { FoodCategoryCards } from "../components/food_category_cards/index";
 import { foodCategories } from "../../sample_data/foodcategories";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../redux/action/product-actions';
+import { fetchFoods } from '../redux/action/product-actions';
 import { addToCart } from '../redux/reducer/cart-reducer';
 import "./index.css";
 
@@ -15,16 +15,17 @@ export default function ExplorePage() {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const dispatch = useDispatch();
-    const products = useSelector(state => state.products);
-    const popularProduct = products.slice(0, 15);
+    const foods = useSelector((state) => state.foods.foods);
+    const popularProduct = foods.slice(0, 15);
 
     useEffect(() => {
-        dispatch(fetchProducts());
-    }, [dispatch]);
+        dispatch(fetchFoods());
+      }, [dispatch]);
+
 
     useEffect(() => {
-        setFilteredProducts(products)
-    }, [products]);
+        setFilteredProducts(foods)
+    }, [foods]);
 
     const handleAddToCart = (item) => {
         dispatch(addToCart(item));
@@ -35,14 +36,14 @@ export default function ExplorePage() {
         if (selectedCategory === null || selectedCategory === "All") {
             tempFilteredProducts = popularProduct;
         } else {
-            tempFilteredProducts = products.filter((item) =>
+            tempFilteredProducts = foods.filter((item) =>
                 item.category
                     .map((cat) => cat.toLowerCase())
                     .includes(selectedCategory.toLowerCase()));
         }
         setFilteredProducts(tempFilteredProducts);
 
-    }, [selectedCategory, products]);
+    }, [selectedCategory, foods]);
 
     const handleCategorySelect = (category) => {
         setSelectedCategory(category);

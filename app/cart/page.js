@@ -7,6 +7,7 @@ import { clearCart, removeFromCart, updateQuantity } from '../redux/reducer/cart
 import Rating from '@mui/material/Rating';
 import closeCircle from "../../assets/close-icon.svg";
 import emptyCartImage from "../../assets/empty-cart-img.png";
+import placeholder from '../../assets/bolognese-spaghetti.jpeg';
 import "./index.css";
 
 export default function CartPage() {
@@ -33,6 +34,8 @@ export default function CartPage() {
     console.log("Checkout lol");
   }
   
+  // console.log(cart.items);
+
   if (cart.items?.length < 1) {
     return (
       <div className='empty-cart-container'>
@@ -72,7 +75,7 @@ export default function CartPage() {
             <div className='cart-card-name'>
               <div className='cart-card-name-image-container'>
                 <div className='cart-card-name-image'>
-                  <Image priority={true} src={item.image} alt='Product Image' />
+                  <Image priority={true} src={placeholder} alt='Product Image' />
                 </div>
                 <div className='cart-card-name-capsule'>
                   <div>{item.foodName}</div>

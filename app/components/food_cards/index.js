@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity } from '../../redux/reducer/cart-reducer';
 import Rating from '@mui/material/Rating';
 import Image from 'next/image';
+import placeholder from '../../../assets/bolognese-spaghetti.jpeg';
 import "./index.css";
 
 export const FoodListCards = ({ product, onAddToCart }) => {
@@ -53,12 +54,11 @@ export const FoodListCards = ({ product, onAddToCart }) => {
         dispatch(updateQuantity({ itemId: id, increment: true }));
     };
 
-
     return (
         <div className='food-list-wrapper'>
             <div className='food-list-grid-wrapper'>
                 <div className='food-list-image'>
-                    <Image className="inner-img" src={image} alt={foodName} />
+                    <Image className="inner-img" src={placeholder} alt={foodName} />
                 </div>
                 <div className='food-list-name-action-wrapper'>
                     <div className='food-list-name'>
@@ -84,7 +84,7 @@ export const FoodListCards = ({ product, onAddToCart }) => {
                     <span className='food-list-separator'></span>
                     <div className="food-list-rating-container">
                         <p>{rating}</p>
-                        <Rating name="read-only" precision={0.5} value={rating} readOnly size="small" />
+                        <Rating name="read-only" precision={0.5} value={parseInt(rating)} readOnly size="small" />
                     </div>
                 </div>
             </div>

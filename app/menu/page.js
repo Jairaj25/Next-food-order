@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../redux/action/product-actions';
+import { fetchFoods } from '../redux/action/product-actions';
 import { foodCategories } from "../../sample_data/foodcategories";
 import { MenuProductsList } from "../components/menu_product_list/index";
 import bannerImage from "../../assets/menu-banner-image.jpeg";
@@ -14,7 +14,7 @@ export default function Menu() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [activeCategory, setActiveCategory] = useState('');
 
-    const products = useSelector(state => state.products);
+    const foods = useSelector((state) => state.foods.foods);
     const dispatch = useDispatch();
 
     const handleCategoryClick = (index, selectedCategory) => {
@@ -28,11 +28,8 @@ export default function Menu() {
     };
 
     useEffect(() => {
-        dispatch(fetchProducts());
-    }, []);
-
-
-
+        dispatch(fetchFoods());
+      }, [dispatch]);
 
     return (
         <div className='main-menu-container'>
@@ -63,7 +60,7 @@ export default function Menu() {
                     ))}
                 </div>
                 <div className='menu-food-list-container'>
-                    <MenuProductsList products={products} activeCategory={activeCategory} handleActiveCategoryChange={handleCategoryClick} />
+                    <MenuProductsList products={foods} activeCategory={activeCategory} handleActiveCategoryChange={handleCategoryClick} />
                 </div>
             </div>
         </div>

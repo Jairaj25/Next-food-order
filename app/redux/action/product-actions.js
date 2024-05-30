@@ -1,24 +1,15 @@
-import { foods } from "../../../sample_data/foods";
-export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
-export const SEARCH_PRODUCTS = 'SEARCH_PRODUCTS';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import FoodAxiosInstance from '../API/food-api';
+import axios from 'axios';
 
-export const fetchProducts = () => {
-  return {
-    type: FETCH_PRODUCTS,
-    payload: foods,
-  };
-};
-
-
-export const searchProducts = (searchQuery) => {
-  return {
-    type: SEARCH_PRODUCTS,
-    payload: searchQuery
-      ? foods.filter(food =>
-          food.foodName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          food.restaurant.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          food.category.some(cat => cat.toLowerCase().includes(searchQuery.toLowerCase()))
-        )
-      : foods,
+export const fetchFoods = createAsyncThunk(
+  'foods/fetchFoods',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('http://localhost:8080/foods/search');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-}
+);

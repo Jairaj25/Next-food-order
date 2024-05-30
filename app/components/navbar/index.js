@@ -25,6 +25,10 @@ export default function NavbarComponent() {
     const [query, setQuery] = useState('');
     const { user } = useUser();
 
+    // console.log('====================================');
+    // console.log(user);
+    // console.log('====================================');
+
     // Modal.setAppElement('#root');
 
     const toggleMenu = () => {
