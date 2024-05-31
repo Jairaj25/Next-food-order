@@ -1,10 +1,11 @@
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Modal from 'react-modal';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { useSelector } from 'react-redux';
 import { NavMenuOptions } from '../nav_menu_options/index';
 import websiteLogo from "../../../assets/website-logo.jpeg";
 import searchIcon from "../../../assets/search-icon.svg";
@@ -21,12 +22,10 @@ export default function NavbarComponent() {
     const inputRef = useRef(null);
     const [menuOpen, setMenuOpen] = useState(false);
     const [isNavOpen, setIsNavOpen] = useState(false);
+    const [orderAlert, setOrderAlert] = useState(false);
     const [query, setQuery] = useState('');
     const { user } = useUser();
-
-    // console.log('====================================');
-    // console.log(user);
-    // console.log('====================================');
+    const { status } = useSelector((state) => state.orders);
 
     // Modal.setAppElement('#root');
 
@@ -62,6 +61,16 @@ export default function NavbarComponent() {
             inputRef.current.blur();
         }
     };
+
+    const toggleOrderAlert = () => {
+        setOrderAlert(false);
+    }
+
+    useEffect(() => {
+        if(status === 'succeeded'){
+            setOrderAlert(true);
+        }
+      }, [status]);
 
     return (
         <>
@@ -142,6 +151,17 @@ export default function NavbarComponent() {
                     </button>
                 </div>
                 <NavMenuOptions user={user} isDesktop={true} />
+            </Modal>
+
+            <Modal
+                isOpen={orderAlert}
+                onRequestClose={toggleOrderAlert}
+                className="order-success-modal"
+                overlayClassName="user-options-overlay"
+                ariaHideApp={false}
+            >
+                <div>Ordered SuccessFully</div>
+                <button onClick={toggleOrderAlert}>close</button>
             </Modal>
         </>
     )

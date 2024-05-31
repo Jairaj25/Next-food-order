@@ -259,6 +259,17 @@
     right: 0px;
 }
 
+.order-success-modal{
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+}
+
 @media (max-width: 768px) {
     .desktop-nav {
         display: none;

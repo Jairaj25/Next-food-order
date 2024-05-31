@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCart, removeFromCart, updateQuantity } from '../redux/reducer/cart-reducer';
@@ -15,14 +16,13 @@ import "./index.css";
 
 export default function CartPage() {
   const dispatch = useDispatch();
-  const { orders, status, error } = useSelector((state) => state.orders);
+  const { status } = useSelector((state) => state.orders);
   const cart = useSelector(state => state.cart);
   const { user } = useUser();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
+  const [cartModalOpen, setCartModalOpen] = useState(false);
 
   const toggleModal = () => {
-    setModalOpen(!modalOpen);
+    setCartModalOpen(!cartModalOpen);
 };
 
   const handleRemoveFromCart = (item) => {
@@ -57,17 +57,12 @@ export default function CartPage() {
     dispatch(createOrder(order));
   }
 
-  const handleProcessedOrder = (status) => {
-    if(status === 'succeeded'){
-      setModalMessage("Order placed successfully");
-    } else {
-      setModalMessage("Failed to place Order, please try again");
-    }
-  }
-
   useEffect(() => {
-    if (status !== 'idle' || 'loading') {
-      handleProcessedOrder(status);
+    if (status === 'succeeded') {
+      redirect(`/ordering`);
+    }
+    if(status === 'failed'){
+      setCartModalOpen(true);
     }
   }, [status]);
 
@@ -163,7 +158,7 @@ export default function CartPage() {
         </div>
       </div>
       <Modal
-        isOpen={modalOpen}
+        isOpen={cartModalOpen}
         onRequestClose={toggleModal}
         className="user-options-modal"
         overlayClassName="user-options-overlay"
