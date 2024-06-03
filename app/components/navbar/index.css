@@ -215,6 +215,79 @@
     padding: 0 0 0 50px;
 }
 
+.user-options-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+}
+
+.order-success-overlay{
+    position: fixed;
+    top: 75%;
+    left: 5%;
+    background-color: transparent;
+    width: 350px;
+    height: 100px;
+}
+
+.order-success-modal{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 0 3%;
+    background-color: #FFFFFF;
+    border: 3px solid #71DA82;
+    position: absolute;
+    top: 75%;
+    left: 5%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-150%, 0);
+    width: 300px;
+    height: 75px;
+    animation: slideInOut 5s ease-in-out forwards;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideInOut {
+    0% {
+        transform: translateX(-150%);
+    }
+    10% {
+        transform: translateX(0);
+    }
+    90% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-150%);
+    }
+}
+
+.order-success-message{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.order-success-header{
+    color: #71DA82;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.order-success-body{
+    font-size: 12px;
+    color: #A8A8A8;
+}
+
 @media screen and (min-width: 1024px) {
     .search-field {
         cursor: none;
@@ -241,15 +314,6 @@
     background-image: linear-gradient( #F29F00, #FFFFFF);
 }
 
-.user-options-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
 .user-options-modal.ReactModal__Content {
     right: -800px;
     transition: right 0.3s ease-in-out;
@@ -257,17 +321,6 @@
 
 .user-options-modal.ReactModal__Content--after-open {
     right: 0px;
-}
-
-.order-success-modal{
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    width: 150px;
-    height: 150px;
 }
 
 @media (max-width: 768px) {

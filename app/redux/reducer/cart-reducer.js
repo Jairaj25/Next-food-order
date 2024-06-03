@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import placeHolder from "../../../assets/pizza-image2.jpeg";
+import Cookies from 'js-cookie';
 
+const COOKIE_NAME = 'cart';
 
 const loadCartFromStorage = () => {
   let storedCart;
 
   if (typeof window !== 'undefined') {
-    storedCart = localStorage.getItem('cart');
+    storedCart = Cookies.get(COOKIE_NAME);
 
     try {
       storedCart = JSON.parse(storedCart);
@@ -27,9 +29,8 @@ const loadCartFromStorage = () => {
 };
 
 const saveCartToStorage = (cart) => {
-
   if (typeof window !== 'undefined') {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    Cookies.set(COOKIE_NAME, JSON.stringify(cart), { expires: 7 });
   }
 };
 

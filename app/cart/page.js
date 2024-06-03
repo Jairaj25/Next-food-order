@@ -1,13 +1,15 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { useRouter, redirect } from 'next/navigation';
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCart, removeFromCart, updateQuantity } from '../redux/reducer/cart-reducer';
 import { createOrder } from '../redux/action/orders-action';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Lottie from 'react-lottie';
+import crossIcon from '../../assets/cross-icon-animated.json';
 import Rating from '@mui/material/Rating';
 import closeCircle from "../../assets/close-icon.svg";
 import emptyCartImage from "../../assets/empty-cart-img.png";
@@ -16,14 +18,26 @@ import "./index.css";
 
 export default function CartPage() {
   const dispatch = useDispatch();
+  const [cartModalOpen, setCartModalOpen] = useState(false);
+  const hasPushedRef = useRef(false);
+  const animationDelay = useRef(null);
   const { status } = useSelector((state) => state.orders);
   const cart = useSelector(state => state.cart);
   const { user } = useUser();
-  const [cartModalOpen, setCartModalOpen] = useState(false);
+  const router = useRouter();
+  const defaultOptions = {
+    loop: false,
+    autoplay: false,
+    animationData: crossIcon,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
 
   const toggleModal = () => {
     setCartModalOpen(!cartModalOpen);
-};
+  };
 
   const handleRemoveFromCart = (item) => {
     dispatch(removeFromCart(item.id));
@@ -42,6 +56,10 @@ export default function CartPage() {
   }
 
   const handleCheckout = () => {
+    if(!user){
+      return router.push('/signup');
+    }
+
     const orderItems = cart.items.map((item) => {
       return {
         foodId: item.id, quantity: item.quantity
@@ -58,13 +76,27 @@ export default function CartPage() {
   }
 
   useEffect(() => {
-    if (status === 'succeeded') {
-      redirect(`/ordering`);
+    if (status === 'succeeded' && hasPushedRef.current === false) {
+      router.push(`/ordering?order=true`);
+      hasPushedRef.current = true;
     }
-    if(status === 'failed'){
+    if (status === 'failed') {
       setCartModalOpen(true);
+      const timer = setTimeout(() => {
+        if (animationDelay.current) {
+          animationDelay.current.play(); 
+        }
+      }, 1000); 
+  
+      return () => clearTimeout(timer);
     }
-  }, [status]);
+  }, [status, dispatch, router]);
+
+  useEffect(() => {
+    if (cartModalOpen === true) {
+      setTimeout(() => toggleModal(), 5200);
+    }
+  }, [cartModalOpen]);
 
 
   if (cart.items?.length < 1) {
@@ -75,7 +107,7 @@ export default function CartPage() {
         </div>
         <div className='empty-cart-description'>
           <div className='empty-cart-image-subtext'>Good Food is always cooking</div>
-          <p className='empty-cart-message'>Your Cart is Empty. Add something from the menu</p>
+          <div className='empty-cart-message'>Your Cart is Empty. Add something from the menu</div>
           <Link href="/menu" className='empty-cart-menu-link'>
             <p>Browse Menu</p>
           </Link>
@@ -129,7 +161,7 @@ export default function CartPage() {
               </div>
               <div className='total-action-wrapper'>
                 <div className='cart-card-total'>
-                  <p>${(item.price * item.quantity).toFixed(2)}</p>
+                  <div>${(item.price * item.quantity).toFixed(2)}</div>
                 </div>
                 <button className='cart-remove-btn' onClick={() => handleRemoveFromCart(item)}>
                   <Image src={closeCircle} alt="close button" width={18} height={18} />
@@ -160,13 +192,23 @@ export default function CartPage() {
       <Modal
         isOpen={cartModalOpen}
         onRequestClose={toggleModal}
-        className="user-options-modal"
-        overlayClassName="user-options-overlay"
+        className="order-failed-modal"
+        overlayClassName="order-failed-overlay"
         ariaHideApp={false}
       >
+        <div className="order-check-icon">
+          <Lottie
+            ref={animationDelay}
+            options={defaultOptions}
+            height={28}
+            width={28}
+          />
+        </div>
         <div className="user-options-close-btn-wrapper">
-          <div></div>
-          <button className="user-options-close-btn" onClick={toggleModal} />
+          <div className='order-failed-message'>
+            <div className='order-failed-header'>Failed!</div>
+            <div className='order-failed-body'>Failed to place order. Please try again</div>
+          </div>
         </div>
       </Modal>
     </>

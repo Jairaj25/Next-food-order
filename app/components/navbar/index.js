@@ -3,10 +3,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import Modal from 'react-modal';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useSelector } from 'react-redux';
 import { NavMenuOptions } from '../nav_menu_options/index';
+import Lottie from 'react-lottie';
+import checkIcon from '../../../assets/check-icon-animated.json';
 import websiteLogo from "../../../assets/website-logo.jpeg";
 import searchIcon from "../../../assets/search-icon.svg";
 import crossIcon from "../../../assets/cross-icon.svg";
@@ -19,13 +21,24 @@ export default function NavbarComponent() {
 
     const router = useRouter();
     const location = usePathname();
+    const searchParams = useSearchParams();
     const inputRef = useRef(null);
+    const animationDelay = useRef(null);
     const [menuOpen, setMenuOpen] = useState(false);
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [orderAlert, setOrderAlert] = useState(false);
     const [query, setQuery] = useState('');
     const { user } = useUser();
     const { status } = useSelector((state) => state.orders);
+    const orderCheck = searchParams.get('order');
+    const defaultOptions = {
+        loop: false,
+        autoplay: false,
+        animationData: checkIcon,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice"
+        }
+      };
 
     // Modal.setAppElement('#root');
 
@@ -67,10 +80,27 @@ export default function NavbarComponent() {
     }
 
     useEffect(() => {
-        if(status === 'succeeded'){
+        const timer = setTimeout(() => {
+            if (animationDelay.current) {
+              animationDelay.current.play(); 
+            }
+          }, 1000); 
+      
+          return () => clearTimeout(timer);
+      }, []);
+
+    useEffect(() => {
+        if (status === 'succeeded') {
+
             setOrderAlert(true);
         }
-      }, [status]);
+    }, [status, router]);
+
+    useEffect(() => {
+        if (orderAlert === true) {
+            setTimeout(() => toggleOrderAlert(), 5200);
+        }
+    }, [orderAlert]);
 
     return (
         <>
@@ -134,7 +164,7 @@ export default function NavbarComponent() {
                     className="mobile-nav-content"
                     ariaHideApp={false}
                 >
-                <NavMenuOptions user={user} isDesktop={false} handleCloseMenu= {handleCloseMenu} />
+                    <NavMenuOptions user={user} isDesktop={false} handleCloseMenu={handleCloseMenu} />
                 </Modal>
             </div>
 
@@ -157,11 +187,21 @@ export default function NavbarComponent() {
                 isOpen={orderAlert}
                 onRequestClose={toggleOrderAlert}
                 className="order-success-modal"
-                overlayClassName="user-options-overlay"
+                overlayClassName="order-success-overlay"
                 ariaHideApp={false}
             >
-                <div>Ordered SuccessFully</div>
-                <button onClick={toggleOrderAlert}>close</button>
+                <div className="order-check-icon">
+                <Lottie
+                    ref={animationDelay}
+                    options={defaultOptions}
+                    height={28}
+                    width={28}
+                />
+                </div>
+                <div className='order-success-message'>
+                    <div className='order-success-header'>Success!</div>
+                    <div className='order-success-body'>Ordered Successfully</div>
+                </div>
             </Modal>
         </>
     )
