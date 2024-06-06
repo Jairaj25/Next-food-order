@@ -122,7 +122,9 @@ function CustomCursor() {
       toggleCursorSize();
     };
 
-    const elements = document.querySelectorAll("a, button, input, .menu-icon, .menu-options, .menu-category-list");
+    const elements = document.querySelectorAll(
+      "a, button, input, .menu-icon, .menu-options, .menu-category-list, empty-cart-menu-link"
+    );
 
     elements.forEach((el) => {
       el.addEventListener("mouseover", handleLinkMouseOver);

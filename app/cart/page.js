@@ -19,6 +19,7 @@ import "./index.css";
 export default function CartPage() {
   const dispatch = useDispatch();
   const [cartModalOpen, setCartModalOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const hasPushedRef = useRef(false);
   const animationDelay = useRef(null);
   const { status } = useSelector((state) => state.orders);
@@ -34,6 +35,9 @@ export default function CartPage() {
     }
   };
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleModal = () => {
     setCartModalOpen(!cartModalOpen);
@@ -98,8 +102,9 @@ export default function CartPage() {
     }
   }, [cartModalOpen]);
 
+  if (!mounted) return <></>;
 
-  if (cart.items?.length < 1) {
+  if (cart.items?.length === 0) {
     return (
       <div className='empty-cart-container'>
         <div className='empty-cart-image'>
@@ -118,12 +123,12 @@ export default function CartPage() {
 
   return (
     <>
+          {cart.items?.length > 0 ? (
       <div className='cart-container'>
         <div className='cart-title'>
           <p>Cart</p>
         </div>
         <div className='cart-items'>
-          {cart.items?.length > 0 ? (
             <div className='cart-card table-titles'>
               <div className='cart-card-name'>Name</div>
               <div className='cart-card-price'>Price</div>
@@ -133,7 +138,7 @@ export default function CartPage() {
               <div className='cart-remove-btn'>
                 <div>Total</div>
               </div>
-            </div>) : (<></>)}
+            </div>
           {cart.items?.map(item => (
             <div className='cart-card' key={item.id}>
               <div className='cart-card-name'>
@@ -189,6 +194,7 @@ export default function CartPage() {
           </div>
         </div>
       </div>
+      ) : (<></>)}
       <Modal
         isOpen={cartModalOpen}
         onRequestClose={toggleModal}

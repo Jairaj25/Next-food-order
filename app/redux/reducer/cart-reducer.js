@@ -8,7 +8,7 @@ const loadCartFromStorage = () => {
   let storedCart;
 
   if (typeof window !== 'undefined') {
-    storedCart = Cookies.get(COOKIE_NAME);
+    storedCart = localStorage.getItem('cart');
 
     try {
       storedCart = JSON.parse(storedCart);
@@ -23,14 +23,16 @@ const loadCartFromStorage = () => {
       totalQuantity: storedCart.items.reduce((total, item) => total + item.quantity, 0)
     };
   } 
+
   else {
-    return { items: [], total: 0, restaurant: '', image: {src: placeHolder.src, blurDataURL: "", blurHeight: 0 , blurWidth: 0, height: 405, width: 612}, rating: '' };
+    return [];
   }
 };
 
 const saveCartToStorage = (cart) => {
+
   if (typeof window !== 'undefined') {
-    Cookies.set(COOKIE_NAME, JSON.stringify(cart), { expires: 7 });
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 };
 
