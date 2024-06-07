@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
               <NavbarComponent />
             </div>
             <div id="root">
-            <CustomCursor />
-              {children}
+              <CustomCursor />
+                {children}
             </div>
           </body>
         </UserProvider>

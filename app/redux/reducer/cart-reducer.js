@@ -75,11 +75,13 @@ const cartSlice = createSlice({
           state.totalQuantity -= 1;
           if (state.totalQuantity < 0) {
             state.totalQuantity = 0;
+            state.restaurant = '';
           }
         }
 
         if (updatedItem.quantity === 0) {
           updatedItems.splice(itemIndex, 1);
+          state.restaurant = '';
         } else {
           updatedItems[itemIndex] = updatedItem;
         }
@@ -94,6 +96,7 @@ const cartSlice = createSlice({
       const itemIdToRemove = action.payload;
       state.items = state.items.filter(item => item.id !== itemIdToRemove);
       state.total = state.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      state.restaurant = '';
       saveCartToStorage(state);
     },
     clearCart: (state) => {

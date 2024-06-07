@@ -123,7 +123,7 @@ function CustomCursor() {
     };
 
     const elements = document.querySelectorAll(
-      "a, button, input, .menu-icon, .menu-options, .menu-category-list, empty-cart-menu-link"
+      "a, button, input, .menu-icon, .menu-options, .menu-category-list, .empty-cart-menu-link, .accept-change-button-container, .deny-change-button-container"
     );
 
     elements.forEach((el) => {

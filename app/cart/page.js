@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter, redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCart, removeFromCart, updateQuantity } from '../redux/reducer/cart-reducer';
@@ -60,8 +60,8 @@ export default function CartPage() {
   }
 
   const handleCheckout = () => {
-    if(!user){
-      return router.push('/signup');
+    if (!user) {
+      return router.push('/api/auth/signup');
     }
 
     const orderItems = cart.items.map((item) => {
@@ -88,10 +88,10 @@ export default function CartPage() {
       setCartModalOpen(true);
       const timer = setTimeout(() => {
         if (animationDelay.current) {
-          animationDelay.current.play(); 
+          animationDelay.current.play();
         }
-      }, 1000); 
-  
+      }, 1000);
+
       return () => clearTimeout(timer);
     }
   }, [status, dispatch, router]);
@@ -123,12 +123,12 @@ export default function CartPage() {
 
   return (
     <>
-          {cart.items?.length > 0 ? (
-      <div className='cart-container'>
-        <div className='cart-title'>
-          <p>Cart</p>
-        </div>
-        <div className='cart-items'>
+      {cart.items?.length > 0 ? (
+        <div className='cart-container'>
+          <div className='cart-title'>
+            <p>Cart</p>
+          </div>
+          <div className='cart-items'>
             <div className='cart-card table-titles'>
               <div className='cart-card-name'>Name</div>
               <div className='cart-card-price'>Price</div>
@@ -139,61 +139,82 @@ export default function CartPage() {
                 <div>Total</div>
               </div>
             </div>
-          {cart.items?.map(item => (
-            <div className='cart-card' key={item.id}>
-              <div className='cart-card-name'>
-                <div className='cart-card-name-image-container'>
-                  <div className='cart-card-name-image'>
-                    <Image priority={true} src={placeholder} alt='Product Image' />
-                  </div>
-                  <div className='cart-card-name-capsule'>
-                    <div>{item.foodName}</div>
-                    <div className='cart-card-category'>{item.category[0]}</div>
-                    <div className="cart-rating-container">
-                      <div>{item.rating}</div>
-                      <Rating name="read-only" precision={0.5} value={parseInt(item.rating)} readOnly size="small" />
+            {cart.items?.map(item => (
+              <div className='cart-card' key={item.id}>
+                <div className='cart-card-name'>
+                  <div className='cart-card-name-image-container'>
+                    <div className='cart-card-name-image'>
+                      <Image priority={true} src={placeholder} alt='Product Image' />
+                    </div>
+                    <div className='cart-card-name-capsule'>
+                      <div>{item.foodName}</div>
+                      <div className='cart-card-category'>{item.category[0]}</div>
+                      <div className="cart-rating-container">
+                        <div>{item.rating}</div>
+                        <Rating name="read-only" precision={0.5} value={parseInt(item.rating)} readOnly size="small" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className='cart-card-price'>${item.price}</div>
-              <div className='cart-quantity-action-wrapper'>
-                <div className='cart-quantity-action'>
-                  <button className='cart-decrement-btn' onClick={() => handleDecrementQuantity(item.id)}>-</button>
-                  <div className='cart-card-quantity'>{item.quantity}</div>
-                  <button className='cart-increment-btn' onClick={() => handleIncrementQuantity(item.id)}>+</button>
+                <div className='cart-card-price'>${item.price}</div>
+                <div className='cart-quantity-action-wrapper'>
+                  <div className='cart-quantity-action'>
+                    <button className='cart-decrement-btn' onClick={() => handleDecrementQuantity(item.id)}>-</button>
+                    <div className='cart-card-quantity'>{item.quantity}</div>
+                    <button className='cart-increment-btn' onClick={() => handleIncrementQuantity(item.id)}>+</button>
+                  </div>
+                </div>
+                <div className='total-action-wrapper'>
+                  <div className='cart-card-total'>
+                    <div>${(item.price * item.quantity).toFixed(2)}</div>
+                  </div>
+                  <button className='cart-remove-btn' onClick={() => handleRemoveFromCart(item)}>
+                    <Image src={closeCircle} alt="close button" width={18} height={18} />
+                  </button>
                 </div>
               </div>
-              <div className='total-action-wrapper'>
-                <div className='cart-card-total'>
-                  <div>${(item.price * item.quantity).toFixed(2)}</div>
-                </div>
-                <button className='cart-remove-btn' onClick={() => handleRemoveFromCart(item)}>
-                  <Image src={closeCircle} alt="close button" width={18} height={18} />
-                </button>
-              </div>
+            ))}
+          </div>
+          <div className='cart-actions'>
+            <div className='cart-total-price-wrapper'>
+              <p>Sub Total:</p>
+              <p className='cart-total-price'>${cart.total?.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]}</p>
             </div>
-          ))}
+            <div className='cart-restaurant-wrapper'>
+              <p>Restaurant:</p>
+              <p className='cart-restaurant'> {cart.items?.length > 0 ? cart.restaurant : ""}</p>
+            </div>
+
+            {
+              user ?
+                (
+                  <div className='cart-buttons'>
+                    <button className='clear-cart' onClick={handleCheckout}>
+                      Checkout
+                    </button>
+                    <button className='clear-cart' onClick={handleClearToCart}>
+                      Clear Cart
+                    </button>
+                  </div>
+                )
+                : (
+                  <div className='cart-login-alert'>
+                    <div className='cart-login-message-container'>
+                      <div className='cart-login-message-title'>Almost There</div>
+                      <div className='cart-login-message-body'>Login or Signup to place your order</div>
+                    </div>
+                    <div className='cart-login-button-wrapper'>
+                      <button className='cart-login-button'>
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                )
+            }
+
+
+          </div>
         </div>
-        <div className='cart-actions'>
-          <div className='cart-total-price-wrapper'>
-            <p>Sub Total:</p>
-            <p className='cart-total-price'>${cart.total?.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]}</p>
-          </div>
-          <div className='cart-restaurant-wrapper'>
-            <p>Restaurant:</p>
-            <p className='cart-restaurant'> {cart.items?.length > 0 ? cart.restaurant : ""}</p>
-          </div>
-          <div className='cart-buttons'>
-            <button className='clear-cart' onClick={handleCheckout}>
-              Checkout
-            </button>
-            <button className='clear-cart' onClick={handleClearToCart}>
-              Clear Cart
-            </button>
-          </div>
-        </div>
-      </div>
       ) : (<></>)}
       <Modal
         isOpen={cartModalOpen}
